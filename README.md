@@ -1,0 +1,2 @@
+# spa
+Simple VueJS SPA

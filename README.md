@@ -9,6 +9,11 @@ npm install
 ```
 npm run serve
 ```
+#### Routes
+- / redirects to /product
+- /product is the add a new product page
+- /product/ID is the edit product ID page
+- /admin is the Admin dashboard
 
 ### Compiles and minifies for production
 ```

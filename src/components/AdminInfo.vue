@@ -13,13 +13,14 @@ export default {
     return {
         databaseVersion: '',
         apiVersion: '',
-        uiVersion: '',
+        uiVersion: ''
     };
   },
+
   methods: {
     getData() {
       // Implement logic to save the product using Vuex actions
-    },
-  },
+    }
+  }
 };
 </script>

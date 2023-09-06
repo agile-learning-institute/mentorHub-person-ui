@@ -1,4 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
+const ProductView = () => import('@/views/ProductView.vue');
+const AdminView = () => import('@/views/AdminView.vue');
 
 const routes = [
   {
@@ -7,20 +9,20 @@ const routes = [
   },
   {
     path: '/product',
-    name: 'Product',
-    component: () => import('../views/ProductForm.vue'),
+    name: 'AddProduct',
+    component: ProductView,
     props: { mode: 'add' }, // Pass a prop to indicate "add" mode
   },
   {
     path: '/product/:id', // Use route parameters for editing
     name: 'EditProduct',
-    component: () => import('../views/ProductForm.vue'),
+    component: ProductView,
     props: { mode: 'edit' }, // Pass a prop to indicate "edit" mode
   },
   {
     path: '/admin',
     name: 'Admin',
-    component: () => import('../views/Admin.vue'),
+    component: AdminView,
   },
 ];
 

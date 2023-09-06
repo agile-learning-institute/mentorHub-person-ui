@@ -1,10 +1,10 @@
 <template>
     <div>
-      <h1>Product - Mode  {{ mode }} </h1>
+      <h1>{{ mode }} Product</h1>
       <v-form>
         <v-text-field label="Product Name" v-model="name" required></v-text-field>
-        <v-text-field label="Description" v-model="description"></v-text-field>
-        <p>ID is {{ $route.params.id }}</p>
+        <v-text-field label="Description" v-if="mode==='edit'" v-model="description"></v-text-field>
+        <v-text-field label="ID" v-if="mode==='edit'" v-bind:model-value="$route.params.id" v-bind:readonly="true"></v-text-field>
         <v-btn @click="saveProduct">Save</v-btn>
       </v-form>
     </div>
@@ -28,3 +28,4 @@ export default {
   },
 };
 </script>
+

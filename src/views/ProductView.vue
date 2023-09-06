@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <ProductForm></ProductForm>
+    <ProductForm :mode="mode"></ProductForm>
   </div>
 </template>
 
@@ -11,6 +11,9 @@ import ProductForm from '@/components/ProductForm.vue'
 export default {
   components: {
     ProductForm
-  }
+  },
+  props: {
+    mode: String,
+  },    
 }
 </script>

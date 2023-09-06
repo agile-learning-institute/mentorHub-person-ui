@@ -1,9 +1,4 @@
 <template>
-  <nav>
-    <router-link to="/product">Add Product </router-link> 
-    <router-link to="/product/:id">Edit Product </router-link>
-    <router-link to="/admin">Admin </router-link>
-  </nav>
   <router-view/>
 </template>
 

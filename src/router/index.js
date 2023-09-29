@@ -1,22 +1,22 @@
 import { createRouter, createWebHistory } from 'vue-router';
-const ProductView = () => import('@/views/ProductView.vue');
+const PersonView = () => import('@/views/PersonView.vue');
 const AdminView = () => import('@/views/AdminView.vue');
 
 const routes = [
   {
     path: '/',
-    redirect: '/product', // Redirect to the default route
+    redirect: '/person', // Redirect to the default route
   },
   {
-    path: '/product',
-    name: 'AddProduct',
-    component: ProductView,
+    path: '/person',
+    name: 'AddPerson',
+    component: PersonView,
     props: { mode: 'add' }, // Pass a prop to indicate "add" mode
   },
   {
-    path: '/product/:id', // Use route parameters for editing
-    name: 'EditProduct',
-    component: ProductView,
+    path: '/person/:id', // Use route parameters for editing
+    name: 'EditPerson',
+    component: PersonView,
     props: { mode: 'edit' }, // Pass a prop to indicate "edit" mode
   },
   {

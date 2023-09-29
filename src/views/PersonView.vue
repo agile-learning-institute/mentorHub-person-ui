@@ -1,16 +1,16 @@
 <template>
   <div class="home">
-    <ProductForm :mode="mode"></ProductForm>
+    <PersonForm :mode="mode"></PersonForm>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import ProductForm from '@/components/ProductForm.vue'
+import PersonForm from '@/components/PersonForm.vue'
 
 export default {
   components: {
-    ProductForm
+    PersonForm
   },
   props: {
     mode: String,

@@ -16,10 +16,10 @@ npm run serve
 
 #### Routes
 
-- [localhost:8080/](localhost:8080/) redirects to /person
-- [localhost:8080/person](localhost:8080/person) is the add a new person page
-- [localhost:8080/person/ID](localhost:8080/person/ID) is the edit person page
-- [localhost:8080/admin](localhost:8080/admin) is the Admin dashboard
+- [localhost:8080/](http://localhost:8080/) redirects to /person
+- [localhost:8080/person](http://localhost:8080/person) is the add a new person page
+- [localhost:8080/person/ID](http://localhost:8080/person/ID) is the edit person page
+- [localhost:8080/admin](http://localhost:8080/admin) is the Admin dashboard
 
 ### Compiles and minifies for personion
 

@@ -134,4 +134,8 @@ docker compose up --detach
 - [Add Person](http://localhost:8080/person)
 - [Edit Person](http://localhost:8080/person/651dfe6c13605cd1946273c2)
 
-NOTE: After you add a person you are automatically routed to the Edit Person page for that person. You can change the ID in the Edit Person URI to edit other people.
+NOTE: After you add a person you are automatically routed to the Edit Person page for that person. You can change the ID in the Edit Person URI to edit other people. The search feature for people will be implmented in a separate system, if you need to get a list of all the people in the database with their id, you can use the following command:
+
+```bash
+curl localhost:8081/api/person/
+```

@@ -2,10 +2,24 @@
 
 ## Table of Contents
 
-- Overview
-- Prerequisits
-- Setup for UI/UX Engineers
-- Setup for QA Testers
+- [Overview](#overview)
+- [Prerequisits](#prerequisits)
+- [Setup for UI/UX Engineers](#setup-for-uiux-engineers)
+  - [Build the Containers](#bulding-the-database-and-api)
+  - [Start the API/DB containers](#start-the-apidb-containers)
+  - [Restart the API without loosing data](#restart-the-api-without-loosing-data)
+  - [Restart the API and Reset test data](#restart-the-api-and-reset-test-data)
+  - [Install Dependencies](#install-dependencies)
+  - [Run Dev-Server with Mock API (TODO)](#run-dev-server-with-mock-api-todo)
+  - [Run Dev-Server with Containerized API](#run-dev-server-with-containerized-api)
+  - [Lints and fixes files](#lints-and-fixes-files)
+  - [Customize VueJs Configs](#customize-configuration)
+- [Setup for QA Testers](#setup-for-qa-testers)
+  - [Build all the containers](#build-all-the-containers)
+  - [Run all the containers](#run-all-the-containers)
+  - [Restart the system without loosing data](#restart-the-system-without-loosing-data)
+  - [Restart the system and reset test data](#restart-the-api-and-reset-test-data)
+  - [Application Access Paths](#access-paths)
 
 ## Overview
 
@@ -13,7 +27,7 @@ This project contains a Vue SPA that uses an API from the institute-person-api p
 
 [Here](https://github.com/orgs/agile-learning-institute/repositories?q=institute-person&type=all&sort=name) are the repositories in the person triplet
 
-[here](https://github.com/orgs/agile-learning-institute/repositories?q=institute&type=all&sort=name) are all of the repositories in the [Institute](https://github.com/agile-learning-institute/institute/tree/main) system
+[Here](https://github.com/orgs/agile-learning-institute/repositories?q=institute&type=all&sort=name) are all of the repositories in the [Institute](https://github.com/agile-learning-institute/institute/tree/main) system
 
 ## Prerequisits
 
@@ -75,6 +89,11 @@ npm run serve
 npm run lint
 ```
 
+### Customize configuration
+
+See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
 ## Setup for QA Testers
 
 ### Build all the containers
@@ -90,20 +109,30 @@ npm run build
 docker build . --tag institute-person-api
 ```
 
-Now you can run all the containers with
+### Run all the containers
 
 ```bash
 docker compose up --detach
 ```
 
-and the access the UI at these routes
+### Restart the system without loosing data
+
+```bash
+docker compose stop
+docker compose start
+```
+
+### Restart the system and reset test data
+
+```bash
+docker compose down
+docker compose up --detach
+```
+
+### Access Paths
 
 - [Admin Screen](http://localhost:8080/admin)
 - [Add Person](http://localhost:8080/person)
 - [Edit Person](http://localhost:8080/person/651dfe6c13605cd1946273c2)
 
-NOTE: After you add a person you are automatically routed to the Edit Person page for that person. You can replace the ID in the Edit Person link above to edit other people.
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
+NOTE: After you add a person you are automatically routed to the Edit Person page for that person. You can change the ID in the Edit Person URI to edit other people.

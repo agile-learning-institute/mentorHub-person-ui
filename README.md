@@ -140,12 +140,13 @@ NOTE: After you add a person you are automatically routed to the Edit Person pag
 curl localhost:8081/api/person/
 ```
 
-## Refactor Plans and Enhancements
+## Backlog
 
 - [ ] Update Admin page with CI List
 - [ ] Implement UI Version Info
-- [ ] Containerize
-- [ ] Update PersonForm with new fields
+- [ ] Add onBlur based patch updates
+- [ ] Containerize Build from Ngnix - Comopse with API/DB
+- [ ] Update PersonForm with new fields from API
 - [ ] Add error handling
 - [ ] Add unit testing
 - [ ] Add cypress testing

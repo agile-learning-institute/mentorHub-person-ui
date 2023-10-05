@@ -1,6 +1,15 @@
 # institute-person-ui
 
-This project contains a Vue SPA that uses an API from the institute-person-api project to manage a collection of people. This was developed in a few hours using ChatGPT, by a polyglot software engineer that knew Javascript and had completed half of a VueJS developers course. See [here](https://chat.openai.com/share/5d5db6f2-2f42-491a-9673-3246feb20013) for the chat conversation.
+## Table of Contents
+
+- Overview
+- Prerequisits
+- Setup for UI/UX Engineers
+- Setup for QA Testers
+
+## Overview
+
+This project contains a Vue SPA that uses an API from the institute-person-api project to manage a collection of people. This was kick-started using ChatGPT, by a polyglot software engineer that knew Javascript and had completed half of a VueJS developers course. See [here](https://chat.openai.com/share/5d5db6f2-2f42-491a-9673-3246feb20013) for the chat conversation that got me started.
 
 [Here](https://github.com/orgs/agile-learning-institute/repositories?q=institute-person&type=all&sort=name) are the repositories in the person triplet
 
@@ -12,40 +21,52 @@ This project contains a Vue SPA that uses an API from the institute-person-api p
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) if you want to run the API and DB in containers
 - [Mongo Compass](https://www.mongodb.com/try/download/compass) - if you want a way to look into the database
 
+## Setup for UI/UX Engineers
 
-To run full end-to-end locally, you need to build and run the database container, and the API. Clone [this repo](https://github.com/agile-learning-institute/institute-person-db) and follow the instructions to build (Just Build) the database container. Clone [this repo](https://github.com/agile-learning-institute/institute-person-api) and follow the instructions to build that container, and then to run both the db and api containers.
+### Bulding the Database and API
 
-Once those containers are running you can connect with MongoCompas to verify that the database agile-learning-institute exists, with a collection named people, and you can use the API from the CURL command to verify that the API is running.
+To run over the API you will need to
 
-## Project setup
+- Install and build the database container from [this repo](https://github.com/agile-learning-institute/institute-person-db)
+- Install and build the API container from [this repo](https://github.com/agile-learning-institute/institute-person-api)
+- You can now run the following commands in the institute-person-api folder to run the API/DB containers
+
+### Start the API/DB containers
+
+```bash
+docker compose up --detach
+```
+
+### Restart the API without loosing data
+
+```bash
+docker compose stop
+docker compose start
+```
+
+### Restart the API and Reset test data
+
+```bash
+docker compose down
+docker compose up --detach
+```
+
+### Install Dependencies
 
 ``` bash
 npm install
 ```
 
-### Compiles and hot-reloads for development with a Mock API
+### Run Dev-Server with Mock API (TODO)
 
 ``` bash
 npm run local
 ```
 
-### Compiles and hot-reloads for development with a Containerized API
+### Run Dev-Server with Containerized API
 
 ``` bash
 npm run serve
-```
-
-#### Routes
-
-- [localhost:8081/](http://localhost:8081/) redirects to /person
-- [localhost:8081/person](http://localhost:8081/person) is the add a new person page
-- [localhost:8081/person/ID](http://localhost:8081/person/ID) is the edit person page
-- [localhost:8081/admin](http://localhost:8081/admin) is the Admin dashboard
-
-### Compiles and minifies for personion
-
-``` bash
-npm run build
 ```
 
 ### Lints and fixes files
@@ -53,6 +74,35 @@ npm run build
 ``` bash
 npm run lint
 ```
+
+## Setup for QA Testers
+
+### Build all the containers
+
+To run everything in containers you will need to
+
+- Install and build the database container from [this repo](https://github.com/agile-learning-institute/institute-person-db)
+- Install and build the API container from [this repo](https://github.com/agile-learning-institute/institute-person-api)
+- Build the UI container by running these commands
+
+```bash
+npm run build
+docker build . --tag institute-person-api
+```
+
+Now you can run all the containers with
+
+```bash
+docker compose up --detach
+```
+
+and the access the UI at these routes
+
+- [Admin Screen](http://localhost:8080/admin)
+- [Add Person](http://localhost:8080/person)
+- [Edit Person](http://localhost:8080/person/651dfe6c13605cd1946273c2)
+
+NOTE: After you add a person you are automatically routed to the Edit Person page for that person. You can replace the ID in the Edit Person link above to edit other people.
 
 ### Customize configuration
 

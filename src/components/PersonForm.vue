@@ -62,7 +62,7 @@ export default {
       } else {
         axios.post(apiUrlWithoutId, payload)
           .then(response => {
-            this.$router.push({ name: 'PersonForm', params: { id: response.data.ID } });
+            this.$router.push({ name: 'EditPerson', params: { id: response.data.ID } });
           })
           .catch(error => {
             console.error('An error occurred:', error);

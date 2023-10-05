@@ -2,6 +2,10 @@
 
 This project contains a Vue SPA that uses an API from the institute-person-api project to manage a collection of people. This was developed in a few hours using ChatGPT, by a polyglot software engineer that knew Javascript and had completed half of a VueJS developers course. See [here](https://chat.openai.com/share/5d5db6f2-2f42-491a-9673-3246feb20013) for the chat conversation.
 
+[Here](https://github.com/orgs/agile-learning-institute/repositories?q=institute-person&type=all&sort=name) are the repositories in the person triplet
+
+[here](https://github.com/orgs/agile-learning-institute/repositories?q=institute&type=all&sort=name) are all of the repositories in the [Institute](https://github.com/agile-learning-institute/institute/tree/main) system
+
 ## Prerequisits
 
 - [NodeJS and NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)

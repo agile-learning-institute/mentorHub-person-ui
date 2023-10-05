@@ -93,7 +93,6 @@ npm run lint
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-
 ## Setup for QA Testers
 
 ### Build all the containers

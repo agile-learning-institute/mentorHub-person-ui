@@ -139,3 +139,12 @@ NOTE: After you add a person you are automatically routed to the Edit Person pag
 ```bash
 curl localhost:8081/api/person/
 ```
+
+## Refactor Plans and Enhancements
+
+- [ ] Update Admin page with CI List
+- [ ] Implement UI Version Info
+- [ ] Containerize
+- [ ] Add error handling
+- [ ] Add unit testing
+- [ ] Add cypress testing

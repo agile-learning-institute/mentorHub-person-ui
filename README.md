@@ -145,6 +145,7 @@ curl localhost:8081/api/person/
 - [ ] Update Admin page with CI List
 - [ ] Implement UI Version Info
 - [ ] Containerize
+- [ ] Update PersonForm with new fields
 - [ ] Add error handling
 - [ ] Add unit testing
 - [ ] Add cypress testing

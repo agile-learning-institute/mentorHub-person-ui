@@ -143,7 +143,7 @@ curl localhost:8081/api/person/
 ## Backlog
 
 - [X] Update Admin page with CI List
-- [ ] Implement UI Version Info
+- [X] Implement UI Version Info
 - [ ] Containerize Build from Ngnix - Comopse with API/DB
 - [ ] Add onBlur based patch updates
 - [ ] Update PersonForm with new fields from API

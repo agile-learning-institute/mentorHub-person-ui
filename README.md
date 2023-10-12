@@ -105,7 +105,7 @@ To run everything in containers you will need to
 
 ```bash
 npm run build
-docker build . --tag institute-person-api
+docker build . --tag institute-person-ui
 ```
 
 ### Run all the containers
@@ -150,3 +150,4 @@ curl localhost:8081/api/person/
 - [ ] Add error handling
 - [ ] Add unit testing
 - [ ] Add cypress testing
+- [ ] Add paginated /people route (name linked to /person/ID)

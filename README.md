@@ -105,14 +105,11 @@ docker compose up --detach
 ### Access Paths
 
 - Admin Screen [http://localhost/admin](http://localhost/admin)
+- List People [http://localhost/people](http://localhost/people)
 - Add Person [http://localhost/person](http://localhost/person)
 - Edit Person [http://localhost/person/[id]](http://localhost/person/[id])
 
-NOTE: After you add a person you are automatically routed to the Edit Person page for that person. You can change the ID in the Edit Person URI to edit other people. The search feature for people will be implmented in a separate system, if you need to get a list of all the people in the database with their id, you can use the following command:
-
-```bash
-curl localhost:8081/api/person/
-```
+NOTE: After you add a person you are automatically routed to the Edit Person page for that person. You can change the ID in the Edit Person URI to edit other people.
 
 ## Backlog
 

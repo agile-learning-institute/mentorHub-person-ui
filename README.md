@@ -116,12 +116,12 @@ curl localhost:8081/api/person/
 
 ## Backlog
 
-- [X] Update Admin page with CI List
-- [X] Implement UI Version Info
-- [X] Containerize Build from Ngnix - Comopse with API/DB
-- [ ] Add /people route with links to /erson/[id]
-- [ ] Add onBlur based patch updates
+- [x] Update Admin page with CI List
+- [x] Implement UI Version Info
+- [x] Containerize Build from Ngnix - Comopse with API/DB
+- [x] Add /people route with links to /person/[id]
 - [ ] Update PersonForm with new fields from API
+- [ ] Add onBlur based patch updates
 - [ ] Add error handling
 - [ ] Add unit testing
 - [ ] Add cypress testing

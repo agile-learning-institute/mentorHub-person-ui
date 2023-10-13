@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 const PersonView = () => import('@/views/PersonView.vue');
 const AdminView = () => import('@/views/AdminView.vue');
+const PeopleList = () => import('@/views/PeopleView.vue');
 
 const routes = [
   {
@@ -18,6 +19,11 @@ const routes = [
     name: 'EditPerson',
     component: PersonView,
     props: { mode: 'edit' }, // Pass a prop to indicate "edit" mode
+  },
+  {
+    path: '/people', 
+    name: 'ListPeople',
+    component: PeopleList,
   },
   {
     path: '/admin',

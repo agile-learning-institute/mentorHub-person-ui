@@ -19,7 +19,7 @@ services:
     depends_on:
       institute-mongodb:
         condition: service_healthy
-    entrypoint: "mongosh --host institute-mongodb -u root -p example --authenticationDatabase admin agile-learning-institute --eval 'load(\"/src/00-auto.js\")'"
+    entrypoint: "mongosh --host institute-mongodb -u root -p example --authenticationDatabase admin agile-learning-institute --eval 'load(\"/src/migrate.js\")'"
 
   institute-person-api:
     image: institute-person-api

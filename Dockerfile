@@ -1,8 +1,11 @@
-# syntax=docker/dockerfile:1
-FROM amd64/ngnix:latest
+# Use the Nginx image
+FROM nginx:latest
 
-ADD ./output /
-ADD ./PATCH_LEVEL /
+# Copy the static files from dist/ to the Nginx container
+COPY ./dist /usr/share/nginx/html
 
-EXPOSE 8080:8080
+# Copy the Nginx configuration file
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 
+# Expose port 80
+EXPOSE 80

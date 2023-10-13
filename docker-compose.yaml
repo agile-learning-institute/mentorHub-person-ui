@@ -36,9 +36,10 @@ services:
   institute-person-ui:
     image: institute-person-ui
     restart: always
+    environment:
+      API_HOST: institute-person-api
+      API_PORT: 8081
     ports:
-      - 8080:8080
+      - 80:80  # Changed the container port to 80
     depends_on:
       - institute-person-api
-          
-    

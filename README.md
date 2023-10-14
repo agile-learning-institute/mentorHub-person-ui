@@ -51,7 +51,7 @@ npm install
 
 ### Manually build UI container
 
-The Dockerfile expects the project to be built for production, and the ```/dist/patch.txt``` file to contain the current git hash.
+The Dockerfile expects the project to be built for production, and the ```/dist/patch.txt``` file to contain the current git hash. For your convience the file ```docker-build.sh``` will run the following commands.
 
 ```bash
 npm run build
@@ -81,7 +81,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### Build and Run the Containers
 
-To quickly build all containers, first clone the data and api repositoryies, and then you can run this script
+To quickly build and run all containers, first clone the data and api repositoryies, and then you can run this script
 
 ```bash
 ./docker-build-all.sh

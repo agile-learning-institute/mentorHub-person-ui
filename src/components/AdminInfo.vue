@@ -44,7 +44,9 @@ export default {
       const apiUrl = `${apiHost}:${apiPort}/api/config/`;
 
       try {
+        // create parameter to prevent cache on flat API calls
         const parms = {params: {_: new Date().getTime()}}
+        
         const apiResponse = await axios.get(apiUrl, parms);
         this.databaseVersion = apiResponse.data.DBVersion;
         this.apiVersion = apiResponse.data.Version;

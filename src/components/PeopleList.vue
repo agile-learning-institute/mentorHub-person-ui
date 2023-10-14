@@ -23,12 +23,13 @@ export default {
   },
   methods: {
     async getData() {
-      const parms = {params: {_: new Date().getTime()}}
       const apiHost = process.env.VUE_APP_API_HOST;
       const apiPort = process.env.VUE_APP_API_PORT;
       const apiUrl = `${apiHost}:${apiPort}/api/person/`;
 
       try {
+        // create parameter to prevent cache on flat API calls
+        const parms = {params: {_: new Date().getTime()}}
         const apiResponse = await axios.get(apiUrl, parms);
         this.people = apiResponse.data        
       } catch(error) {

@@ -125,6 +125,7 @@ NOTE: After you add a person you are automatically routed to the Edit Person pag
 - [x] Update PersonForm with new fields from API
 - [ ] Patch updates with only dirty values
 - [ ] On-Blur auto save with Saving indicator
+- [ ] Add Unit Testing
 - [ ] Fix non-scoped styles in PeopleForm.vue component
 - [ ] Add validators for eMail, phone
 - [ ] Add size limiters to name, description, eMail, gitHub, location

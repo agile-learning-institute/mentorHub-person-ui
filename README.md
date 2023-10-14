@@ -117,7 +117,7 @@ NOTE: After you add a person you are automatically routed to the Edit Person pag
 - [x] Implement UI Version Info
 - [x] Containerize Build from Ngnix - Comopse with API/DB
 - [x] Add /people route with links to /person/[id]
-- [ ] Update PersonForm with new fields from API
+- [x] Update PersonForm with new fields from API
 - [ ] Add onBlur based patch updates
 - [ ] Add error handling
 - [ ] Add unit testing

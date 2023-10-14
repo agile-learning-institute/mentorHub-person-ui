@@ -2,21 +2,21 @@
     <div>
       <h1>{{ mode }} Person</h1>
       <v-form>
-        <v-text-field label="ID" v-if="mode==='edit'" v-bind:model-value="$route.params.id" v-bind:readonly="true"></v-text-field>
+        <!-- <v-text-field label="ID" v-if="mode==='edit'" v-bind:model-value="$route.params.id" v-bind:readonly="true"></v-text-field> -->
         <template v-if="mode==='add'">
           <v-text-field label="Name" v-model="person.name" required></v-text-field>
           <v-btn @click="newPerson">Create New Person</v-btn>
         </template>
         <template v-else>
           <v-text-field label="Name" @change="saveMe($event, 'name')" v-model="person.name" required></v-text-field>
-          <v-text-field label="Description" @change="saveMe($event, 'description')" v-model="person.description"></v-text-field>
-          <v-text-field label="Status" @change="saveMe($event, 'status')" v-model="person.status"></v-text-field>
           <div class="flex-container">
             <v-checkbox class="flex-item" label="Member" @change="saveMe($event, 'member')" v-model="person.member"></v-checkbox>
             <v-checkbox class="flex-item" label="Mentor" @change="saveMe($event, 'mentor')" v-model="person.mentor"></v-checkbox>
             <v-checkbox class="flex-item" label="Donor" @change="saveMe($event, 'donor')" v-model="person.donor"></v-checkbox>
             <v-checkbox class="flex-item" label="Contact" @change="saveMe($event, 'contact')" v-model="person.contact"></v-checkbox>
           </div>
+          <v-text-field label="Status" @change="saveMe($event, 'status')" v-model="person.status"></v-text-field>
+          <v-text-field label="Notes" @change="saveMe($event, 'description')" v-model="person.description"></v-text-field>
           <v-text-field label="Title" @change="saveMe($event, 'title')" v-model="person.title"></v-text-field>
           <v-text-field label="Email" @change="saveMe($event, 'eMail')" v-model="person.eMail"></v-text-field>
           <v-text-field label="GitHub" @change="saveMe($event, 'gitHub')" v-model="person.gitHub"></v-text-field>
@@ -36,7 +36,8 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      person: {}
+      person: {},
+      before: {}
     };
   },
   props: {
@@ -51,6 +52,7 @@ export default {
       axios.get(apiUrlWithId)
         .then(response => {
           this.person = response.data;
+          this.before = {...response.data}; 
         })
         .catch(error => {
           console.error('An error occurred:', error);
@@ -70,15 +72,17 @@ export default {
         value = event.target.value;
       }      
       const payload = { [fieldName]: value };
-
+      console.log("Payload:", payload)
       try {
-        await axios.patch(apiUrlWithId, payload);
-        // const response = await axios.patch(apiUrlWithId, payload);
-        // TODO: this.person = response (API Updated Pending)
+        // await axios.patch(apiUrlWithId, payload);
+        const response = await axios.patch(apiUrlWithId, payload);
+        this.person = response.data;
+        this.before = {...response.data}; 
       } catch (error) {
         // TODO: Better Error Message!
-        alert("Error:", error);
-        // TODO event.target.value = beforeChangeValue
+        console.log("SaveMe Error: ", error);
+        alert("Invalid Value");
+        this.person[fieldName] = this.before[fieldName];
         event.target.focus();
       }
     },

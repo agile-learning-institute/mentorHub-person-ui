@@ -4,7 +4,7 @@
     <v-text-field label="Database Version" v-model="databaseVersion"></v-text-field>
     <v-text-field label="API Version" v-model="apiVersion"></v-text-field>
     <v-text-field label="UI Version" v-model="uiVersion"></v-text-field>
-    <h2>Configuration Items</h2>
+    <h2>API Configuration Items</h2>
     <ul class="flex-container">
       <li v-for="item in configItems" :key="item.name" class="flex-item">
         <div class="flex-subitem">

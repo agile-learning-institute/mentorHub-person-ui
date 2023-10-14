@@ -123,12 +123,16 @@ NOTE: After you add a person you are automatically routed to the Edit Person pag
 - [x] Containerize Build from Ngnix - Comopse with API/DB
 - [x] Add /people route with links to /person/[id]
 - [x] Update PersonForm with new fields from API
-- [ ] Add onBlur based patch updates
+- [x] Patch updates with only dirty values
+- [x] On-Blur auto save with Saving indicator
+- [x] Implement Save error handling with generic "invalid" message
+- [ ] Add Unit Testing
 - [ ] Fix non-scoped styles in PeopleForm.vue component
 - [ ] Add validators for eMail, phone
 - [ ] Add size limiters to name, description, eMail, gitHub, location
 - [ ] Add drop-down selectors for Status, Device, Title
-- [ ] Add better error handling
+- [ ] Add better error messaging
 - [ ] Add unit testing
 - [ ] Add cypress testing
-- [ ] Add pagination to /people route
+- [ ] Add pagination with endless scroll to /people route
+- [ ] Add search to /people route

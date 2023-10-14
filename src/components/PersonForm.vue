@@ -3,26 +3,29 @@
       <h1>{{ mode }} Person</h1>
       <v-form>
         <v-text-field label="ID" v-if="mode==='edit'" v-bind:model-value="$route.params.id" v-bind:readonly="true"></v-text-field>
-        <v-text-field label="Name" v-model="person.name" required></v-text-field>
-        <template v-if="mode==='edit'">
-          <v-text-field label="Description" v-model="person.description"></v-text-field>
-          <v-text-field label="Status" v-model="person.status"></v-text-field>
-          <div class="flex-container">
-            <v-checkbox class="flex-item" label="Member" v-model="person.member"></v-checkbox>
-            <v-checkbox class="flex-item" label="Mentor" v-model="person.mentor"></v-checkbox>
-            <v-checkbox class="flex-item" label="Donor" v-model="person.donor"></v-checkbox>
-            <v-checkbox class="flex-item" label="Contact" v-model="person.contact"></v-checkbox>
-          </div>
-          <v-text-field label="Title" v-model="person.title"></v-text-field>
-          <v-text-field label="Email" v-model="person.eMail"></v-text-field>
-          <v-text-field label="GitHub" v-model="person.gitHub"></v-text-field>
-          <v-text-field label="Phone" v-model="person.phone"></v-text-field>
-          <v-text-field label="Device" v-model="person.device"></v-text-field>
-          <v-text-field label="Location" v-model="person.location"></v-text-field>
-          <v-text-field label="MentorName" v-model="person.mentorName"></v-text-field>
-          <v-text-field label="PartnerName" v-model="person.partnerName"></v-text-field>
+        <template v-if="mode==='add'">
+          <v-text-field label="Name" v-model="person.name" required></v-text-field>
+          <v-btn @click="newPerson">Create New Person</v-btn>
         </template>
-        <v-btn @click="savePerson">Save</v-btn>
+        <template v-else>
+          <v-text-field label="Name" @change="saveMe($event, 'name')" v-model="person.name" required></v-text-field>
+          <v-text-field label="Description" @change="saveMe($event, 'description')" v-model="person.description"></v-text-field>
+          <v-text-field label="Status" @change="saveMe($event, 'status')" v-model="person.status"></v-text-field>
+          <div class="flex-container">
+            <v-checkbox class="flex-item" label="Member" @change="saveMe($event, 'member')" v-model="person.member"></v-checkbox>
+            <v-checkbox class="flex-item" label="Mentor" @change="saveMe($event, 'mentor')" v-model="person.mentor"></v-checkbox>
+            <v-checkbox class="flex-item" label="Donor" @change="saveMe($event, 'donor')" v-model="person.donor"></v-checkbox>
+            <v-checkbox class="flex-item" label="Contact" @change="saveMe($event, 'contact')" v-model="person.contact"></v-checkbox>
+          </div>
+          <v-text-field label="Title" @change="saveMe($event, 'title')" v-model="person.title"></v-text-field>
+          <v-text-field label="Email" @change="saveMe($event, 'eMail')" v-model="person.eMail"></v-text-field>
+          <v-text-field label="GitHub" @change="saveMe($event, 'gitHub')" v-model="person.gitHub"></v-text-field>
+          <v-text-field label="Phone" @change="saveMe($event, 'phone')" v-model="person.phone"></v-text-field>
+          <v-text-field label="Device" @change="saveMe($event, 'device')" v-model="person.device"></v-text-field>
+          <v-text-field label="Location" @change="saveMe($event, 'location')" v-model="person.location"></v-text-field>
+          <v-text-field label="MentorName" @change="saveMe($event, 'mentorName')" v-model="person.mentorName"></v-text-field>
+          <v-text-field label="PartnerName" @change="saveMe($event, 'partnerName')" v-model="person.partnerName"></v-text-field>
+        </template>
       </v-form>
     </div>
 </template>
@@ -55,30 +58,44 @@ export default {
     }
   },  
   methods: {
-    savePerson() {
+    async saveMe(event, fieldName) {
       const apiHost = process.env.VUE_APP_API_HOST;
       const apiPort = process.env.VUE_APP_API_PORT;
       const apiUrlWithId = `${apiHost}:${apiPort}/api/person/${this.$route.params.id}`;
-      const apiUrlWithoutId = `${apiHost}:${apiPort}/api/person/`;
 
-      if (this.mode === 'edit') {
-        axios.patch(apiUrlWithId, this.person)
-          .then(response => {
-            console.log('Person updated:', response.data);
-          })
-          .catch(error => {
-            console.error('An error occurred:', error);
-          });
+      var value;
+      if (event.target.type === 'checkbox') {
+        value = event.target.checked;
       } else {
-        axios.post(apiUrlWithoutId, this.person)
-          .then(response => {
-            this.$router.push({ name: 'EditPerson', params: { id: response.data.ID } });
-          })
-          .catch(error => {
-            console.error('An error occurred:', error);
-          });
+        value = event.target.value;
+      }      
+      const payload = { [fieldName]: value };
+
+      try {
+        await axios.patch(apiUrlWithId, payload);
+        // const response = await axios.patch(apiUrlWithId, payload);
+        // TODO: this.person = response (API Updated Pending)
+      } catch (error) {
+        // TODO: Better Error Message!
+        alert("Error:", error);
+        event.target.focus();
       }
     },
+
+    async newPerson() {
+      const apiHost = process.env.VUE_APP_API_HOST;
+      const apiPort = process.env.VUE_APP_API_PORT;
+      const apiUrlWithoutId = `${apiHost}:${apiPort}/api/person/`;
+
+      try {
+        const response = await axios.post(apiUrlWithoutId, this.person)
+        this.$router.push({ name: 'EditPerson', params: { id: response.data.ID } });
+      } catch (error) {
+        console.error('An error occurred:', error);
+        // TODO: Error Message Dialog 
+        // TODO: Set focus back to event.target
+      }
+    }
   }
 };
 </script>

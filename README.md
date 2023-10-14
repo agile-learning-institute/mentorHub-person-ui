@@ -51,8 +51,13 @@ npm install
 
 ### Manually build UI container
 
+The Dockerfile expects the project to be built for production, and the ```/dist/patch.txt``` file to contain the current git hash.
+
 ```bash
 npm run build
+export BRANCH=$(git branch --show-current)
+export PATCH=$(git rev-parse $BRANCH)
+echo $BRANCH.$PATCH > ./dist/patch.txt
 docker build . --tag institute-person-ui
 ```
 

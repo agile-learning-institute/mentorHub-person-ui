@@ -8,23 +8,23 @@
           <v-btn @click="newPerson">Create New Person</v-btn>
         </template>
         <template v-else>
-          <v-text-field label="Name" @blur="saveMe($event, 'name')" v-model="person.name" required></v-text-field>
-          <v-text-field label="Description" @blur="saveMe($event, 'description')" v-model="person.description"></v-text-field>
-          <v-text-field label="Status" @blur="saveMe($event, 'status')" v-model="person.status"></v-text-field>
+          <v-text-field label="Name" @change="saveMe($event, 'name')" v-model="person.name" required></v-text-field>
+          <v-text-field label="Description" @change="saveMe($event, 'description')" v-model="person.description"></v-text-field>
+          <v-text-field label="Status" @change="saveMe($event, 'status')" v-model="person.status"></v-text-field>
           <div class="flex-container">
             <v-checkbox class="flex-item" label="Member" @change="saveMe($event, 'member')" v-model="person.member"></v-checkbox>
             <v-checkbox class="flex-item" label="Mentor" @change="saveMe($event, 'mentor')" v-model="person.mentor"></v-checkbox>
             <v-checkbox class="flex-item" label="Donor" @change="saveMe($event, 'donor')" v-model="person.donor"></v-checkbox>
             <v-checkbox class="flex-item" label="Contact" @change="saveMe($event, 'contact')" v-model="person.contact"></v-checkbox>
           </div>
-          <v-text-field label="Title" @blur="saveMe($event, 'title')" v-model="person.title"></v-text-field>
-          <v-text-field label="Email" @blur="saveMe($event, 'eMail')" v-model="person.eMail"></v-text-field>
-          <v-text-field label="GitHub" @blur="saveMe($event, 'gitHub')" v-model="person.gitHub"></v-text-field>
-          <v-text-field label="Phone" @blur="saveMe($event, 'phone')" v-model="person.phone"></v-text-field>
-          <v-text-field label="Device" @blur="saveMe($event, 'device')" v-model="person.device"></v-text-field>
-          <v-text-field label="Location" @blur="saveMe($event, 'location')" v-model="person.location"></v-text-field>
-          <v-text-field label="MentorName" @blur="saveMe($event, 'mentorName')" v-model="person.mentorName"></v-text-field>
-          <v-text-field label="PartnerName" @blur="saveMe($event, 'partnerName')" v-model="person.partnerName"></v-text-field>
+          <v-text-field label="Title" @change="saveMe($event, 'title')" v-model="person.title"></v-text-field>
+          <v-text-field label="Email" @change="saveMe($event, 'eMail')" v-model="person.eMail"></v-text-field>
+          <v-text-field label="GitHub" @change="saveMe($event, 'gitHub')" v-model="person.gitHub"></v-text-field>
+          <v-text-field label="Phone" @change="saveMe($event, 'phone')" v-model="person.phone"></v-text-field>
+          <v-text-field label="Device" @change="saveMe($event, 'device')" v-model="person.device"></v-text-field>
+          <v-text-field label="Location" @change="saveMe($event, 'location')" v-model="person.location"></v-text-field>
+          <v-text-field label="MentorName" @change="saveMe($event, 'mentorName')" v-model="person.mentorName"></v-text-field>
+          <v-text-field label="PartnerName" @change="saveMe($event, 'partnerName')" v-model="person.partnerName"></v-text-field>
         </template>
       </v-form>
     </div>
@@ -76,8 +76,9 @@ export default {
         // const response = await axios.patch(apiUrlWithId, payload);
         // TODO: this.person = response (API Updated Pending)
       } catch (error) {
-        // TODO: Error Message Dialog 
-        // TODO: Set focus back to event.target
+        // TODO: Better Error Message!
+        alert("Error:", error);
+        event.target.focus();
       }
     },
 

@@ -81,10 +81,10 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### Build and Run the Containers
 
-To quickly build and run all containers, first clone the data and api repositoryies, and then you can run this script
+To quickly build and run all containers, first clone the [data](https://github.com/agile-learning-institute/institute-mongodb) and [api](https://github.com/agile-learning-institute/institute-person-api) repo's as siblings to this repo, and then you can run this script:
 
 ```bash
-./docker-build-all.sh
+./docker-build-all-and-run.sh
 ```
 
 ### Start the stack manually

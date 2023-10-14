@@ -133,4 +133,5 @@ NOTE: After you add a person you are automatically routed to the Edit Person pag
 - [ ] Add better error handling
 - [ ] Add unit testing
 - [ ] Add cypress testing
-- [ ] Add pagination to /people route
+- [ ] Add pagination with endless scroll to /people route
+- [ ] Add search to /people route

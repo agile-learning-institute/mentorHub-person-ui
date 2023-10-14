@@ -118,8 +118,11 @@ NOTE: After you add a person you are automatically routed to the Edit Person pag
 - [x] Containerize Build from Ngnix - Comopse with API/DB
 - [x] Add /people route with links to /person/[id]
 - [x] Update PersonForm with new fields from API
+- [ ] Add validators for eMail, phone
+- [ ] Add size limiters to name, description, eMail, gitHub, location
+- [ ] Add drop-down selectors for Status, Device, Title
 - [ ] Add onBlur based patch updates
-- [ ] Add error handling
+- [ ] Add better error handling
 - [ ] Add unit testing
 - [ ] Add cypress testing
-- [ ] Add pagiination to /people route
+- [ ] Add pagination to /people route

@@ -44,12 +44,13 @@ export default {
       const apiUrl = `${apiHost}:${apiPort}/api/config/`;
 
       try {
-        const apiResponse = await axios.get(apiUrl);
+        const parms = {params: {_: new Date().getTime()}}
+        const apiResponse = await axios.get(apiUrl, parms);
         this.databaseVersion = apiResponse.data.DBVersion;
         this.apiVersion = apiResponse.data.Version;
         this.configItems = apiResponse.data.ConfigItems
         
-        const patchResponse = await axios.get('/patch.txt');
+        const patchResponse = await axios.get('/patch.txt', parms);
         const patchValue = patchResponse.data.trim();
         this.uiVersion = `${versionInfo.major}.${versionInfo.minor}.${patchValue}`;
       } catch(error) {

@@ -19,7 +19,15 @@ services:
     depends_on:
       institute-mongodb:
         condition: service_healthy
-    entrypoint: "mongosh --host institute-mongodb -u root -p example --authenticationDatabase admin agile-learning-institute --eval 'load(\"/src/migrate.js\")'"
+    environment:
+      - HOST=institute-mongodb
+      - USER=root
+      - PASSWORD=example
+      - AUTH_DB=admin
+      - DB_NAME=agile-learning-institute
+      - SCRIPT_PATH=/src/migrate.js
+      - LOAD_TEST=true
+    entrypoint: ["/src/entrypoint.sh"]
 
   institute-person-api:
     image: institute-person-api

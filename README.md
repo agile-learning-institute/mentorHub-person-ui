@@ -13,7 +13,7 @@
   - [Customize configuration](#customize-configuration)
 
 - [Setup for QA Testers](#setup-for-qa-testers)
-  - [Start everything in containers](#start-everything-in-containers)
+  - [Build and Run containers](#build-and-run-the-containers)
   - [Restart without loosing data](#restart-without-loosing-data)
   - [Restart and Reset test data](#restart-and-reset-test-data)
   - [Access Paths](#access-paths)
@@ -51,7 +51,7 @@ npm install
 
 ### Manually build UI container
 
-The Dockerfile expects the project to be built for production, and the ```/dist/patch.txt``` file to contain the current git hash.
+The Dockerfile expects the project to be built for production, and the ```/dist/patch.txt``` file to contain the current git hash. For your convience the file ```docker-build.sh``` will run the following commands.
 
 ```bash
 npm run build
@@ -79,15 +79,15 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Setup for QA Testers
 
-### Build the Containers
+### Build and Run the Containers
 
-To quickly build all containers, first clone the data and api repositoryies, and then you can run this script
+To quickly build and run all containers, first clone the data and api repositoryies, and then you can run this script
 
 ```bash
 ./docker-build-all.sh
 ```
 
-### Start everything in containers
+### Start the stack manually
 
 ```bash
 docker compose up --detach
@@ -123,11 +123,11 @@ NOTE: After you add a person you are automatically routed to the Edit Person pag
 - [x] Containerize Build from Ngnix - Comopse with API/DB
 - [x] Add /people route with links to /person/[id]
 - [x] Update PersonForm with new fields from API
+- [ ] Add onBlur based patch updates
 - [ ] Fix non-scoped styles in PeopleForm.vue component
 - [ ] Add validators for eMail, phone
 - [ ] Add size limiters to name, description, eMail, gitHub, location
 - [ ] Add drop-down selectors for Status, Device, Title
-- [ ] Add onBlur based patch updates
 - [ ] Add better error handling
 - [ ] Add unit testing
 - [ ] Add cypress testing

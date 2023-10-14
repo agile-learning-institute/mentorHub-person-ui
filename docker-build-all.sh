@@ -16,3 +16,5 @@ echo $BRANCH.$PATCH > ./dist/patch.txt
 docker build . --tag institute-person-ui
 
 docker image prune -f
+
+docker compose up --detach

@@ -13,7 +13,7 @@
   - [Customize configuration](#customize-configuration)
 
 - [Setup for QA Testers](#setup-for-qa-testers)
-  - [Start everything in containers](#start-everything-in-containers)
+  - [Build and Run containers](#build-and-run-the-containers)
   - [Restart without loosing data](#restart-without-loosing-data)
   - [Restart and Reset test data](#restart-and-reset-test-data)
   - [Access Paths](#access-paths)
@@ -79,7 +79,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Setup for QA Testers
 
-### Build the Containers
+### Build and Run the Containers
 
 To quickly build all containers, first clone the data and api repositoryies, and then you can run this script
 
@@ -87,7 +87,7 @@ To quickly build all containers, first clone the data and api repositoryies, and
 ./docker-build-all.sh
 ```
 
-### Start everything in containers
+### Start the stack manually
 
 ```bash
 docker compose up --detach

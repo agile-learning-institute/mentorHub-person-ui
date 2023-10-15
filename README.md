@@ -87,12 +87,6 @@ To quickly build and run all containers, first clone the [data](https://github.c
 ./docker-build-all-and-run.sh
 ```
 
-### Start the stack manually
-
-```bash
-docker compose up --detach
-```
-
 ### Restart without loosing data
 
 ```bash
@@ -109,7 +103,11 @@ docker compose up --detach
 
 ### Access Paths
 
+- Default [http://localhost/](http://localhost/) routes to List People
 - Admin Screen [http://localhost/admin](http://localhost/admin)
+
+You can also access the List, Add and Edit views directly at
+
 - List People [http://localhost/people](http://localhost/people)
 - Add Person [http://localhost/person](http://localhost/person)
 - Edit Person [http://localhost/person/[id]](http://localhost/person/[id])

@@ -1,9 +1,13 @@
 <template>
   <div>
-    <h1>People</h1>
+    <h1>
+      <a :href="newPersonLink()" target="_blank">Add New Person</a>
+    </h1>
     <ul>
       <li v-for="name in people" :key="name.ID" >
-        <v-btn class="listItem" @click="edit(name.ID)">{{name.name}}</v-btn>
+        <div class="listItem">
+          <a :href="editPersonLink(name.ID)" target="_blank">{{name.name}}</a>  
+        </div>
       </li>
     </ul>
   </div>
@@ -37,9 +41,13 @@ export default {
         console.error('An error occurred:', error);
       }
     },
-    edit(id) {
-      this.$router.push({ name: 'EditPerson', params: { id: id } });
-    }
+    newPersonLink() {
+      return this.$router.resolve({ name: 'AddPerson'}).href;
+    },
+    editPersonLink(id) {
+      // Generate the link for EditPerson route
+      return this.$router.resolve({ name: 'EditPerson', params: { id: id } }).href;
+    },
   },
 };
 

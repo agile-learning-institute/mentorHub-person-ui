@@ -126,6 +126,8 @@ NOTE: After you add a person you are automatically routed to the Edit Person pag
 - [x] Patch updates with only dirty values
 - [x] On-Blur auto save with Saving indicator
 - [x] Implement Save error handling with generic "invalid" message
+- [x] Open new/edit vues in new tab
+- [x] Add New Person link to /people
 - [ ] Add Unit Testing
 - [ ] Fix non-scoped styles in PeopleForm.vue component
 - [ ] Add validators for eMail, phone

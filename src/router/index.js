@@ -6,7 +6,7 @@ const PeopleList = () => import('@/views/PeopleView.vue');
 const routes = [
   {
     path: '/',
-    redirect: '/person', // Redirect to the default route
+    redirect: '/people', // Redirect to the default route
   },
   {
     path: '/person',

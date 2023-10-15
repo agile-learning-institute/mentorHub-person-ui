@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
-const PersonView = () => import('@/views/PersonView.vue');
+const AddPersonView = () => import('@/views/AddPersonView.vue');
+const EditPersonView = () => import('@/views/EditPersonView.vue');
 const AdminView = () => import('@/views/AdminView.vue');
 const PeopleList = () => import('@/views/PeopleView.vue');
 
@@ -11,14 +12,12 @@ const routes = [
   {
     path: '/person',
     name: 'AddPerson',
-    component: PersonView,
-    props: { mode: 'add' }, // Pass a prop to indicate "add" mode
+    component: AddPersonView,
   },
   {
     path: '/person/:id', // Use route parameters for editing
     name: 'EditPerson',
-    component: PersonView,
-    props: { mode: 'edit' }, // Pass a prop to indicate "edit" mode
+    component: EditPersonView,
   },
   {
     path: '/people', 

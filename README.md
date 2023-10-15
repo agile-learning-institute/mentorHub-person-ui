@@ -136,3 +136,4 @@ NOTE: After you add a person you are automatically routed to the Edit Person pag
 - [ ] Add cypress testing
 - [ ] Add pagination with endless scroll to /people route
 - [ ] Add search to /people route
+- [ ] Add JWT authentication

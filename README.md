@@ -13,10 +13,11 @@
   - [Customize configuration](#customize-configuration)
 
 - [Setup for QA Testers](#setup-for-qa-testers)
-  - [Build and Run containers](#build-and-run-the-containers)
-  - [Restart without loosing data](#restart-without-loosing-data)
-  - [Restart and Reset test data](#restart-and-reset-test-data)
+  - [Run the Containers from GitHub](#run-the-containers-from-github-container-registry)
   - [Access Paths](#access-paths)
+  - [Restart without loosing data](#restart-containers-without-loosing-data)
+  - [Restart and Reset test data](#restart-containers-and-reset-test-data)
+  - [Build containers from source](#build-the-containers-from-source)
 
 ## Overview
 
@@ -79,29 +80,27 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Setup for QA Testers
 
-### Build and Run the Containers
+### Run the Containers from GitHub Container Registry
 
-To quickly build and run all containers, first clone the [data](https://github.com/agile-learning-institute/institute-mongodb) and [api](https://github.com/agile-learning-institute/institute-person-api) repo's as siblings to this repo, and then you can run this script:
-
-```bash
-./docker-build-all-and-run.sh
-```
-
-### Restart without loosing data
+If you have docker installed, clone this repo, and then use the command below to launch the latest version published on our GitHub Container Registry. (NOTE: Only tested on Intel/Mac)
 
 ```bash
-docker compose stop
-docker compose start
-```
-
-### Restart and Reset test data
-
-```bash
-docker compose down
 docker compose up --detach
 ```
 
+You will see four containers created, and after a few seconds you should see something like this
+
+```bash
+ ✔ Network institute-person-ui_default                   Created
+ ✔ Container institute-person-ui-institute-mongodb-1     Healthy
+ ✔ Container institute-person-ui-institute-mongosh-1     Exited
+ ✔ Container institute-person-ui-institute-person-api-1  Started
+ ✔ Container institute-person-ui-institute-person-ui-1   Started
+ ```
+
 ### Access Paths
+
+You should now have access to the application, you can access the following pages
 
 - Default [http://localhost/](http://localhost/) routes to List People
 - Admin Screen [http://localhost/admin](http://localhost/admin)
@@ -113,6 +112,28 @@ You can also access the List, Add and Edit views directly at
 - Edit Person [http://localhost/person/[id]](http://localhost/person/[id])
 
 NOTE: After you add a person you are automatically routed to the Edit Person page for that person. You can change the ID in the Edit Person URI to edit other people.
+
+### Restart containers without loosing data
+
+```bash
+docker compose stop
+docker compose start
+```
+
+### Restart containers and Reset test data
+
+```bash
+docker compose down
+docker compose up --detach
+```
+
+### Build the containers from source
+
+If you want to build from source to have access to code that has not been pushed yet, you can quickly build and run all containers, first clone the [data](https://github.com/agile-learning-institute/institute-mongodb) and [api](https://github.com/agile-learning-institute/institute-person-api) repo's as siblings to this repo, and then you can run this script:
+
+```bash
+./docker-build-all-and-run.sh
+```
 
 ## Backlog
 

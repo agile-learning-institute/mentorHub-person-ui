@@ -15,7 +15,7 @@ services:
       retries: 5
 
   institute-mongosh:
-    image: institute-mongosh
+    image: ghcr.io/agile-learning-institute/institute-mongosh:latest
     depends_on:
       institute-mongodb:
         condition: service_healthy
@@ -30,7 +30,7 @@ services:
     entrypoint: ["/src/entrypoint.sh"]
 
   institute-person-api:
-    image: institute-person-api
+    image: ghcr.io/agile-learning-institute/institute-person-api:latest
     restart: always
     ports:
       - 8081:8081
@@ -42,7 +42,7 @@ services:
         condition: service_completed_successfully
 
   institute-person-ui:
-    image: institute-person-ui
+    image: ghcr.io/agile-learning-institute/institute-person-ui:latest
     restart: always
     environment:
       API_HOST: institute-person-api

@@ -29,10 +29,10 @@ This project contains a Vue SPA that uses an API from the institute-person-api p
 
 ## Prerequisits
 
-- [NodeJS and NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/) if you want to run the API and DB in containers
-- [GitHub Access Token](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-with-a-personal-access-token-classic)
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- [GitHub Containers Configured](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-with-a-personal-access-token-classic)
 - [Mongo Compass](https://www.mongodb.com/try/download/compass) - if you want a way to look into the database
+- [NodeJS and NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) - if you want to build locally
 
 ## Setup for UI/UX Engineers
 

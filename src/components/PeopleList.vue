@@ -24,8 +24,18 @@ export default {
   },
   mounted() {
     this.getData();  // Call getData() when the component is mounted
+    document.addEventListener("visibilitychange", this.handleVisibilityChange);
+  },
+  beforeDestroy() {
+    document.removeEventListener("visibilitychange", this.handleVisibilityChange);
   },
   methods: {
+    handleVisibilityChange() {
+      if (document.visibilityState === 'visible') {
+        console.log("Refreshing");
+        this.getData(); 
+      }
+    },
     async getData() {
       const apiHost = process.env.VUE_APP_API_HOST;
       const apiPort = process.env.VUE_APP_API_PORT;

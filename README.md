@@ -83,9 +83,10 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### Run the Containers from GitHub Container Registry
 
-If you have installed the prerequisites download [this file](https://github.com/agile-learning-institute/institute-person-ui/blob/main/docker-compose.yaml), and then open a terminal window, and go to the directory where you downloaded the file, and use the command below to launch the latest version published on our GitHub Container Registry. (NOTE: Only tested on Intel/Mac)
+If you have installed the prerequisites open a terminal window, create a directory for your work, and use the commands below to launch the latest version published on our GitHub Container Registry. (NOTE: Only tested on Intel/Mac)
 
 ```bash
+curl -o docker-compose.yaml -L https://github.com/agile-learning-institute/institute-person-ui/raw/main/docker-compose.yaml
 docker compose up --detach
 ```
 

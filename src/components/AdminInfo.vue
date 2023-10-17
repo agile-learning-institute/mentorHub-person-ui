@@ -1,7 +1,8 @@
 <template>
   <div>
     <h1>Admin Dashboard</h1>
-    <v-text-field label="Database Version" v-model="databaseVersion"></v-text-field>
+    <v-text-field label="People Schema Version" v-model="peopleDatabaseVersion"></v-text-field>
+    <v-text-field label="Enums Schema Version" v-model="enumsDatabaseVersion"></v-text-field>
     <v-text-field label="API Version" v-model="apiVersion"></v-text-field>
     <v-text-field label="UI Version" v-model="uiVersion"></v-text-field>
     <h2>API Configuration Items</h2>
@@ -28,7 +29,8 @@ import versionInfo from '@/version.json';  // Import version.json
 export default {
   data() {
     return {
-        databaseVersion: '',
+        peopleDatabaseVersion: '',
+        enumsDatabaseVersion: '',
         apiVersion: '',
         uiVersion: '',
         configItems: []  // New property to hold ConfigItems
@@ -48,8 +50,9 @@ export default {
         const parms = {params: {_: new Date().getTime()}}
         
         const apiResponse = await axios.get(apiUrl, parms);
-        this.databaseVersion = apiResponse.data.DBVersion;
-        this.apiVersion = apiResponse.data.Version;
+        this.peopleDatabaseVersion = apiResponse.data.PeopleVersion;
+        this.enumsDatabaseVersion = apiResponse.data.EnumVersion;
+        this.apiVersion = apiResponse.data.ApiVersion;
         this.configItems = apiResponse.data.ConfigItems
         
         const patchResponse = await axios.get('/patch.txt', parms);

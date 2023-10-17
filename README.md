@@ -31,6 +31,7 @@ This project contains a Vue SPA that uses an API from the institute-person-api p
 
 - [NodeJS and NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) if you want to run the API and DB in containers
+- [GitHub Access Token](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-with-a-personal-access-token-classic)
 - [Mongo Compass](https://www.mongodb.com/try/download/compass) - if you want a way to look into the database
 
 ## Setup for UI/UX Engineers
@@ -82,7 +83,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### Run the Containers from GitHub Container Registry
 
-If you have docker installed, clone this repo, and then use the command below to launch the latest version published on our GitHub Container Registry. (NOTE: Only tested on Intel/Mac)
+If you have installed the prerequisites download [this file](https://github.com/agile-learning-institute/institute-person-ui/blob/main/docker-compose.yaml), and then open a terminal window, and go to the directory where you downloaded the file, and use the command below to launch the latest version published on our GitHub Container Registry. (NOTE: Only tested on Intel/Mac)
 
 ```bash
 docker compose up --detach

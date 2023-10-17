@@ -32,7 +32,6 @@ export default {
   methods: {
     handleVisibilityChange() {
       if (document.visibilityState === 'visible') {
-        console.log("Refreshing");
         this.getData(); 
       }
     },

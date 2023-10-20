@@ -149,6 +149,7 @@ If you want to build from source to have access to code that has not been pushed
 - [x] Implement Save error handling with generic "invalid" message
 - [x] Open new/edit vues in new tab
 - [x] Add New Person link to /people
+- [ ] Add improved page name from context in routes (list, new, name, admin)
 - [ ] Add Unit Testing
 - [ ] Fix non-scoped styles in PeopleForm.vue component
 - [ ] Add validators for eMail, phone

@@ -149,20 +149,25 @@ If you want to build from source to have access to code that has not been pushed
 - [x] Implement Save error handling with generic "invalid" message
 - [x] Open new/edit vues in new tab
 - [x] Add New Person link to /people
-- [ ] Add improved page name from context in routes (list, new, name, admin)
-- [ ] Properly Implment Store with Andmin, People, Person Mutations
-- [ ] Load Enums for pick lists at page load
-- [ ] Add Collections list to Admin Page
-- [ ] Implement v-expansion-panel to collapse CI and Collection Lsts
-- [ ] Implement enumirators panel to admin page (Mentors, Partners, Enums by Name)
-- [ ] Add Unit Testing
-- [ ] Fix non-scoped styles in PeopleForm.vue component
-- [ ] Add validators for eMail, phone
-- [ ] Add size limiters to name, description, eMail, gitHub, location
-- [ ] Add drop-down selectors for Status, Device, Title
-- [ ] Add better error messaging
-- [ ] Add unit testing
-- [ ] Add cypress testing
-- [ ] Add pagination with endless scroll to /people route
-- [ ] Add search to /people route
-- [ ] Add JWT authentication
+- Feature Branch ```implement-vuex-store```
+  - [ ] Add improved page name from context in routes (list, new, name, admin)
+  - [ ] Properly Implment Store with Andmin, People, Person Mutations
+  - [ ] Load Enums for pick lists at page load
+  - [ ] Add Collections list to Admin Page
+- Feature Branch ```cleanup-admin-view```
+  - [ ] Implement v-expansion-panel to collapse CI and Collection Lsts
+  - [ ] Add enumirators panels to admin page (Mentors, Partners, Enums by Name)
+- Feature Branch ```improve-validations```
+  - [ ] Add v-select selectors for Mentor, Partner, Status, Device, Title
+  - [ ] Add size limiters to name, description, eMail, gitHub, location
+  - [ ] Add validators for eMail, phone
+  - [ ] Add better error messaging (duplicate name error)
+- Feature Branch ```search-people```
+  - [ ] Add pagination with endless scroll to /people route
+  - [ ] Add search to /people route
+- Feature Branch ```secure-api-access```
+  - [ ] Add JWT authentication
+- Refactors
+  - [ ] Fix non-scoped styles in PeopleForm.vue component
+  - [ ] Add unit testing
+  - [ ] Add cypress testing

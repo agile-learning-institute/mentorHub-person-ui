@@ -161,7 +161,7 @@ If you want to build from source to have access to code that has not been pushed
   - [ ] Add v-select selectors for Mentor, Partner, Status, Device, Title
   - [ ] Add size limiters to name, description, eMail, gitHub, location
   - [ ] Add validators for eMail, phone
-  - [ ] Add better error messaging (duplicate name error)
+  - [ ] Add better error messaging where needed (duplicate name error)
 - Feature Branch ```search-people```
   - [ ] Add pagination with endless scroll to /people route
   - [ ] Add search to /people route

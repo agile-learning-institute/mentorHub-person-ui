@@ -150,6 +150,11 @@ If you want to build from source to have access to code that has not been pushed
 - [x] Open new/edit vues in new tab
 - [x] Add New Person link to /people
 - [ ] Add improved page name from context in routes (list, new, name, admin)
+- [ ] Properly Implment Store with Andmin, People, Person Mutations
+- [ ] Load Enums for pick lists at page load
+- [ ] Add Collections list to Admin Page
+- [ ] Implement v-expansion-panel to collapse CI and Collection Lsts
+- [ ] Implement enumirators panel to admin page (Mentors, Partners, Enums by Name)
 - [ ] Add Unit Testing
 - [ ] Fix non-scoped styles in PeopleForm.vue component
 - [ ] Add validators for eMail, phone

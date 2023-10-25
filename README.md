@@ -30,9 +30,13 @@ This project contains a Vue SPA that uses an API from the institute-person-api p
 ## Prerequisits
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+  - For Mac ```brew install docker```
 - [GitHub Containers Configured](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-with-a-personal-access-token-classic)
-- [Mongo Compass](https://www.mongodb.com/try/download/compass) - if you want a way to look into the database
 - [NodeJS and NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) - if you want to build locally
+
+### Optionally
+
+- [Mongo Compass](https://www.mongodb.com/try/download/compass) - if you want a way to look into the database
 
 ## Setup for UI/UX Engineers
 
@@ -153,8 +157,8 @@ If you want to build from source to have access to code that has not been pushed
   - [ ] Add improved page name from context in routes (list, new, name, admin)
   - [ ] Properly Implment Store with Andmin, People, Person Mutations
   - [ ] Load Enums for pick lists at page load
-  - [ ] Add Collections list to Admin Page
 - Feature Branch ```cleanup-admin-view```
+  - [ ] Add Collections list to Admin Page
   - [ ] Implement v-expansion-panel to collapse CI and Collection Lsts
   - [ ] Add enumirators panels to admin page (Mentors, Partners, Enums by Name)
 - Feature Branch ```improve-validations```

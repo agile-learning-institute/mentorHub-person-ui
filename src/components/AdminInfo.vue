@@ -16,6 +16,14 @@
         <v-expansion-panel-title><h2>Enumerators</h2></v-expansion-panel-title>
         <v-expansion-panel-text><AdminEnumerators/></v-expansion-panel-text>
       </v-expansion-panel>
+      <v-expansion-panel>
+        <v-expansion-panel-title><h2>Partners</h2></v-expansion-panel-title>
+        <v-expansion-panel-text><AdminListNames :enumerators="config.partners"/></v-expansion-panel-text>
+      </v-expansion-panel>
+      <v-expansion-panel>
+        <v-expansion-panel-title><h2>Mentors</h2></v-expansion-panel-title>
+        <v-expansion-panel-text><AdminListNames :enumerators="config.mentors"/></v-expansion-panel-text>
+      </v-expansion-panel>
     </v-expansion-panels>
   </div>
 </template>
@@ -25,12 +33,14 @@ import { mapState } from 'vuex';
 import AdminConfigItems from './AdminConfigItems.vue'
 import AdminCollections from './AdminCollections.vue'
 import AdminEnumerators from './AdminEnumerators.vue'
+import AdminListNames from './AdminListNames.vue'
 
 export default {
   components: {
     AdminConfigItems,
     AdminCollections,
-    AdminEnumerators
+    AdminEnumerators,
+    AdminListNames
   },
   computed: {
     ...mapState(['config'])
@@ -41,29 +51,3 @@ export default {
 };
 
 </script>
-
-<style scoped>
-
-.flex-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-}
-
-.flex-item {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin: 5px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.flex-subitem {
-  flex: 1;
-  text-align: left;
-  width: 33%;
-}
-</style>

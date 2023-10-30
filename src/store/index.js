@@ -27,12 +27,18 @@ const store = createStore({
       const apiPort = process.env.VUE_APP_API_PORT;
       const enumsUrl = `${apiHost}:${apiPort}/api/enums/`;
       const configUrl = `${apiHost}:${apiPort}/api/config/`;
+      const partnerUrl = `${apiHost}:${apiPort}/api/partners/`;
+      const mentorsUrl = `${apiHost}:${apiPort}/api/mentors/`;
       const parms = {params: {_: new Date().getTime()}} // prevent cache on flat API calls
 
       try {
         const configResponse = await axios.get(configUrl, parms);
         const enumsResponse = await axios.get(enumsUrl, parms);
-        configResponse.data.enums = enumsResponse.data;
+        const partnerResponse = await axios.get(partnerUrl, parms);
+        const mentorsRepsonse = await axios.get(mentorsUrl, parms);
+        configResponse.data.enums = enumsResponse.data[0];
+        configResponse.data.partners = partnerResponse.data;
+        configResponse.data.mentors = mentorsRepsonse.data
 
         const patchResponse = await axios.get('/patch.txt', parms);
         const patchValue = patchResponse.data.trim();

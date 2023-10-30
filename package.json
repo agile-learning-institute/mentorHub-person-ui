@@ -11,13 +11,14 @@
     "axios": "^1.5.1",
     "core-js": "^3.8.3",
     "vue": "^3.2.13",
-    "vuetify": "^3.3.15",
     "vue-router": "^4.0.3",
+    "vuetify": "^3.3.15",
     "vuex": "^4.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
+    "@mdi/font": "^7.3.67",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-plugin-router": "~5.0.0",
@@ -26,6 +27,7 @@
     "eslint": "^7.32.0",
     "eslint-plugin-import": "^2.28.1",
     "eslint-plugin-vue": "^9.17.0",
+    "material-design-icons-iconfont": "^6.7.0",
     "vue-cli-plugin-vuetify": "^2.5.8"
   },
   "eslintConfig": {

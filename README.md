@@ -161,6 +161,7 @@ If you want to build from source to have access to code that has not been pushed
   - [x] Add Collections list to Admin Page
   - [x] Add enumirators panels to admin page (Mentors, Partners, Enums by Name)
   - [x] Implement v-expansion-panel to collapse CI and Collection Lsts
+  - [x] Fix non-scoped styles in PeopleForm.vue component
 
 - Feature Branch ```improve-validations```
   - [ ] Add v-select selectors for Mentor, Partner, Status, Device, Title
@@ -176,6 +177,5 @@ If you want to build from source to have access to code that has not been pushed
   - [ ] Add JWT authentication
 
 - Others
-  - [ ] Fix non-scoped styles in PeopleForm.vue component
   - [ ] Add unit testing
   - [ ] Add cypress testing

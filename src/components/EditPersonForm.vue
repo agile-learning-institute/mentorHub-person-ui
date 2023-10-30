@@ -53,13 +53,6 @@ export default {
 };
 </script>
 
-<style> 
-/* scoped does not work, this makes check boxes visible */
-.v-selection-control__input input {
-  opacity: 1 !important;
-}
-</style>
-
 <style scoped>
 
 .flex-container {

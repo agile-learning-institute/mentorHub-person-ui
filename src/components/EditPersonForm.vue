@@ -25,52 +25,27 @@
 </template>
   
 <script>
-import axios from 'axios';
+import { mapState } from 'vuex';
 
 export default {
-  data() {
-    return {
-      person: {},
-      before: {}
-    };
+  computed: {
+    ...mapState(['person'])
   },
   mounted() {
-    const apiHost = process.env.VUE_APP_API_HOST;
-    const apiPort = process.env.VUE_APP_API_PORT;
-    const apiUrlWithId = `${apiHost}:${apiPort}/api/person/${this.$route.params.id}`;
-
-    axios.get(apiUrlWithId)
-      .then(response => {
-        this.person = response.data;
-        this.before = {...response.data}; 
-      })
-      .catch(error => {
-        console.error('An error occurred:', error);
-      });
+    this.$store.dispatch('getPerson', this.$route.params.id);
   },  
   methods: {
     async saveMe(event, fieldName) {
-      const apiHost = process.env.VUE_APP_API_HOST;
-      const apiPort = process.env.VUE_APP_API_PORT;
-      const apiUrlWithId = `${apiHost}:${apiPort}/api/person/${this.$route.params.id}`;
-
-      var value;
-      if (event.target.type === 'checkbox') {
-        value = event.target.checked;
-      } else {
-        value = event.target.value;
-      }      
-      const payload = { [fieldName]: value };
+      const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
+      
       try {
-        // await axios.patch(apiUrlWithId, payload);
-        const response = await axios.patch(apiUrlWithId, payload);
-        this.person = response.data;
-        this.before = {...response.data}; 
+        await this.$store.dispatch('patchPerson', {
+          id: this.$route.params.id,
+          fieldName,
+          value
+        });
       } catch (error) {
-        // TODO: Better Error Message!
-        console.log("SaveMe Error: ", error);
-        alert("Invalid Value");
-        this.person[fieldName] = this.before[fieldName];
+        alert(error.message);
         event.target.focus();
       }
     }

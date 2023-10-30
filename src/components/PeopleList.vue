@@ -23,6 +23,7 @@ export default {
     };
   },
   mounted() {
+    document.title = 'People';
     this.getData();  // Call getData() when the component is mounted
     document.addEventListener("visibilitychange", this.handleVisibilityChange);
   },

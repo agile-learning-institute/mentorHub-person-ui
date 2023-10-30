@@ -153,25 +153,29 @@ If you want to build from source to have access to code that has not been pushed
 - [x] Implement Save error handling with generic "invalid" message
 - [x] Open new/edit vues in new tab
 - [x] Add New Person link to /people
+
 - Feature Branch ```implement-vuex-store```
-  - [ ] Add improved page name from context in routes (list, new, name, admin)
-  - [ ] Properly Implment Store with Andmin, People, Person Mutations
-  - [ ] Load Enums for pick lists at page load
-- Feature Branch ```cleanup-admin-view```
-  - [ ] Add Collections list to Admin Page
-  - [ ] Implement v-expansion-panel to collapse CI and Collection Lsts
-  - [ ] Add enumirators panels to admin page (Mentors, Partners, Enums by Name)
+  - [x] Add improved page name from context in routes (list, new, name, admin)
+  - [x] Properly Implment Store with Admin, Person Mutations
+  - [x] Load Enums for pick lists at page load
+  - [x] Add Collections list to Admin Page
+  - [x] Add enumirators panels to admin page (Mentors, Partners, Enums by Name)
+  - [x] Implement v-expansion-panel to collapse CI and Collection Lsts
+
 - Feature Branch ```improve-validations```
   - [ ] Add v-select selectors for Mentor, Partner, Status, Device, Title
   - [ ] Add size limiters to name, description, eMail, gitHub, location
   - [ ] Add validators for eMail, phone
   - [ ] Add better error messaging where needed (duplicate name error)
+
 - Feature Branch ```search-people```
   - [ ] Add pagination with endless scroll to /people route
   - [ ] Add search to /people route
+
 - Feature Branch ```secure-api-access```
   - [ ] Add JWT authentication
-- Refactors
+
+- Others
   - [ ] Fix non-scoped styles in PeopleForm.vue component
   - [ ] Add unit testing
   - [ ] Add cypress testing

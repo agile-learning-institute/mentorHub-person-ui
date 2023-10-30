@@ -1,69 +1,43 @@
 <template>
   <div>
     <h1>Admin Dashboard</h1>
-    <v-text-field label="People Schema Version" v-model="peopleDatabaseVersion"></v-text-field>
-    <v-text-field label="Enums Schema Version" v-model="enumsDatabaseVersion"></v-text-field>
-    <v-text-field label="API Version" v-model="apiVersion"></v-text-field>
-    <v-text-field label="UI Version" v-model="uiVersion"></v-text-field>
-    <h2>API Configuration Items</h2>
-    <ul class="flex-container">
-      <li v-for="item in configItems" :key="item.name" class="flex-item">
-        <div class="flex-subitem">
-          {{ item.name }}
-        </div>
-        <div class="flex-subitem">
-          {{ item.value }}
-        </div>
-        <div class="flex-subitem">
-          From: {{ item.from }}
-        </div>
-      </li>
-    </ul>
+    <v-text-field label="UI Version" v-model="config.uiVersion"></v-text-field>
+    <v-text-field label="API Version" v-model="config.ApiVersion"></v-text-field>
+    <v-expansion-panels>
+      <v-expansion-panel>
+        <v-expansion-panel-title><h2>Config Items</h2></v-expansion-panel-title>
+        <v-expansion-panel-text><AdminConfigItems/></v-expansion-panel-text>
+      </v-expansion-panel>
+      <v-expansion-panel>
+        <v-expansion-panel-title><h2>Database Collections</h2></v-expansion-panel-title>
+        <v-expansion-panel-text><AdminCollections/></v-expansion-panel-text>
+      </v-expansion-panel>
+      <v-expansion-panel>
+        <v-expansion-panel-title><h2>Enumerators</h2></v-expansion-panel-title>
+        <v-expansion-panel-text><AdminEnumerators/></v-expansion-panel-text>
+      </v-expansion-panel>
+    </v-expansion-panels>
   </div>
 </template>
   
 <script>
-import axios from 'axios';
-import versionInfo from '@/version.json';  // Import version.json
+import { mapState } from 'vuex';
+import AdminConfigItems from './AdminConfigItems.vue'
+import AdminCollections from './AdminCollections.vue'
+import AdminEnumerators from './AdminEnumerators.vue'
 
 export default {
-  data() {
-    return {
-        peopleDatabaseVersion: '',
-        enumsDatabaseVersion: '',
-        apiVersion: '',
-        uiVersion: '',
-        configItems: []  // New property to hold ConfigItems
-    };
+  components: {
+    AdminConfigItems,
+    AdminCollections,
+    AdminEnumerators
+  },
+  computed: {
+    ...mapState(['config'])
   },
   mounted() {
-    this.getData();  // Call getData() when the component is mounted
-  },
-  methods: {
-    async getData() {
-      const apiHost = process.env.VUE_APP_API_HOST;
-      const apiPort = process.env.VUE_APP_API_PORT;
-      const apiUrl = `${apiHost}:${apiPort}/api/config/`;
-
-      try {
-        // create parameter to prevent cache on flat API calls
-        const parms = {params: {_: new Date().getTime()}}
-        
-        const apiResponse = await axios.get(apiUrl, parms);
-        this.peopleDatabaseVersion = apiResponse.data.PeopleVersion;
-        this.enumsDatabaseVersion = apiResponse.data.EnumVersion;
-        this.apiVersion = apiResponse.data.ApiVersion;
-        this.configItems = apiResponse.data.ConfigItems
-        
-        const patchResponse = await axios.get('/patch.txt', parms);
-        const patchValue = patchResponse.data.trim();
-        this.uiVersion = `${versionInfo.major}.${versionInfo.minor}.${patchValue}`;
-      } catch(error) {
-        console.log("Error:", error);
-        console.error('An error occurred:', error);
-      }
-    },
-  },
+    document.title = 'Configuration';
+  },  
 };
 
 </script>

@@ -47,7 +47,7 @@ After a few seconds that command you should see something like this
  ✔ Container institute-person-ui-institute-person-ui-1   Started
  ```
 
-You can now access the UI at the
+You can now access the UI at the [Access Paths](#access-paths)
 
 ## For UI/UX Engineers
 

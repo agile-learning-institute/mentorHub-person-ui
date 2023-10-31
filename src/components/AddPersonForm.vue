@@ -10,27 +10,24 @@
 </template>
   
 <script>
-import axios from 'axios';
+import { mapState } from 'vuex';
 
 export default {
-  data() {
-    return {
-      person: {},
-    };
+  computed: {
+    ...mapState(['person'])
   },
+  mounted() {
+    document.title = 'New Person';
+  },  
   methods: {
-    async newPerson() {
-      const apiHost = process.env.VUE_APP_API_HOST;
-      const apiPort = process.env.VUE_APP_API_PORT;
-      const apiUrlWithoutId = `${apiHost}:${apiPort}/api/person/`;
-
+    // ...mapActions(['newPerson']),
+    async newPerson() {      
       try {
-        const response = await axios.post(apiUrlWithoutId, this.person)
-        this.$router.push({ name: 'EditPerson', params: { id: response.data.ID } });
+        const response = await this.$store.dispatch('postPerson');
+        console.log("response", response);
+        this.$router.push({ name: 'EditPerson', params: { id: response._id } });
       } catch (error) {
-        console.error('An error occurred:', error);
-        // TODO: Error Message Dialog 
-        // TODO: Set focus back to event.target
+        alert(error.message);
       }
     }
   }

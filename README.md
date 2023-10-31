@@ -4,26 +4,18 @@
 
 - [Overview](#overview)
 - [Prerequisits](#prerequisits)
-- [Setup for UI/UX Engineers](#setup-for-uiux-engineers)
-  - [Build the Containers](#bulding-the-database-and-api)
-  - [Install Dependencies](#install-dependencies)
-  - [Manually build API container](#manually-build-ui-container)
-  - [Run Dev-Server](#run-dev-server)
-  - [Lints and fixes files](#lints-and-fixes-files)
-  - [Customize configuration](#customize-configuration)
-
-- [Setup for QA Testers](#setup-for-qa-testers)
-  - [Run the Containers from GitHub](#run-the-containers-from-github-container-registry)
-  - [Access Paths](#access-paths)
-  - [Restart without loosing data](#restart-containers-without-loosing-data)
-  - [Restart and Reset test data](#restart-containers-and-reset-test-data)
-  - [Build containers from source](#build-the-containers-from-source)
+- [Run Containers Locally](#run-containers-locally)
+- [For UI/UX Engineers](#for-uiux-engineers)
+  - [Install Dependencies and Run](#install-dependencies)
+  - [Using the API Containers](#using-the-database-and-api-containers)
+  - [Buid and test containers locally](#manually-build-and-test-ui-container)
+- [Access Paths](#access-paths)
+- [Observability and Configuration](#observability-and-configuration)
+- [Backlog and Feature Branch info](#backlog)
 
 ## Overview
 
 This project contains a Vue SPA that uses an API from the institute-person-api project to manage a collection of people. This was kick-started using ChatGPT, by a polyglot software engineer that knew Javascript and had completed half of a VueJS developers course. See [here](https://chat.openai.com/share/5d5db6f2-2f42-491a-9673-3246feb20013) for the chat conversation that got me started.
-
-[Here](https://github.com/orgs/agile-learning-institute/repositories?q=institute-person&type=all&sort=name) are the repositories in the person microservice
 
 [Here](https://github.com/orgs/agile-learning-institute/repositories?q=institute&type=all&sort=name) are all of the repositories in the [Institute](https://github.com/agile-learning-institute/institute/tree/main) system
 
@@ -38,33 +30,35 @@ This project contains a Vue SPA that uses an API from the institute-person-api p
 
 - [Mongo Compass](https://www.mongodb.com/try/download/compass) - if you want a way to look into the database
 
-## Setup for UI/UX Engineers
+## Run Containers Locally
 
-### Bulding the Database and API
+```bash
+curl https://raw.githubusercontent.com/agile-learning-institute/institute-person-ui/main/src/docker/run-local.sh | /bin/bash
+```
 
-To run over the API you will need to build containers from the database and API projects. First clone the repo's below.
+You can review the script at ./src/docker/run-local-api.sh.
+After a few seconds that command you should see something like this
 
-- Install and build the database container from [this repo](https://github.com/agile-learning-institute/institute-mongodb)
-- Install and build the API container from [this repo](https://github.com/agile-learning-institute/institute-person-api)
+```bash
+ ✔ Network institute-person-ui_default                   Created
+ ✔ Container institute-person-ui-institute-mongodb-1     Healthy
+ ✔ Container institute-person-ui-institute-mongosh-1     Exited
+ ✔ Container institute-person-ui-institute-person-api-1  Started
+ ✔ Container institute-person-ui-institute-person-ui-1   Started
+ ```
 
-You can then use the docker compose up command from the API project to run the database and API containers for testing.
+You can now access the UI at the
+
+## For UI/UX Engineers
+
+### Using the Database and API Containers
+
+If you want a local API, with test data preloaded, you can run the database and API containers independently. See [this repo](https://github.com/agile-learning-institute/institute-person-api) for instructions on how to run the containers.
 
 ### Install Dependencies
 
 ``` bash
 npm install
-```
-
-### Manually build UI container
-
-The Dockerfile expects the project to be built for production, and the ```/dist/patch.txt``` file to contain the current git hash. For your convience the file ```docker-build.sh``` will run the following commands.
-
-```bash
-npm run build
-export BRANCH=$(git branch --show-current)
-export PATCH=$(git rev-parse $BRANCH)
-echo $BRANCH.$PATCH > ./dist/patch.txt
-docker build . --tag institute-person-ui
 ```
 
 ### Run Dev-Server
@@ -83,33 +77,40 @@ npm run lint
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-## Setup for QA Testers
+### Manually build and test UI container
 
-### Run the Containers from GitHub Container Registry
-
-If you have installed the prerequisites open a terminal window, create a directory for your work, and use the commands below to launch the latest version published on our GitHub Container Registry. (NOTE: Only tested on Intel/Mac)
+The Dockerfile expects the project to be built for production, and the ```/dist/patch.txt``` file to contain the current git hash.
 
 ```bash
-curl -o docker-compose.yaml -L https://github.com/agile-learning-institute/institute-person-ui/raw/main/docker-compose.yaml
+.src/docker-build.sh
+```
+
+### Restart containers without loosing data
+
+```bash
+cd ./src/docker
+docker compose stop
+docker compose start
+```
+
+### Restart containers and Reset test data
+
+```bash
+cd ./src/docker
+docker compose down
 docker compose up --detach
 ```
 
-You will see four containers created, and after a few seconds you should see something like this
+## Access Paths
 
-```bash
- ✔ Network institute-person-ui_default                   Created
- ✔ Container institute-person-ui-institute-mongodb-1     Healthy
- ✔ Container institute-person-ui-institute-mongosh-1     Exited
- ✔ Container institute-person-ui-institute-person-api-1  Started
- ✔ Container institute-person-ui-institute-person-ui-1   Started
- ```
+### A word on ports
 
-### Access Paths
+NOTE: If you are running the UI in developer mode, you can access the app on port 8080. If you are running the application from containers, you can access the UI at the default HTTP port of 80.
 
 You should now have access to the application, you can access the following pages
 
-- Default [http://localhost/](http://localhost/) routes to List People
 - Admin Screen [http://localhost/admin](http://localhost/admin)
+- Default [http://localhost/](http://localhost/) routes to List People
 
 You can also access the List, Add and Edit views directly at
 
@@ -119,27 +120,11 @@ You can also access the List, Add and Edit views directly at
 
 NOTE: After you add a person you are automatically routed to the Edit Person page for that person. You can change the ID in the Edit Person URI to edit other people.
 
-### Restart containers without loosing data
+## Observability and configuration
 
-```bash
-docker compose stop
-docker compose start
-```
+The ```/admin``` route will return a list of configuration values.
 
-### Restart containers and Reset test data
-
-```bash
-docker compose down
-docker compose up --detach
-```
-
-### Build the containers from source
-
-If you want to build from source to have access to code that has not been pushed yet, you can quickly build and run all containers, first clone the [data](https://github.com/agile-learning-institute/institute-mongodb) and [api](https://github.com/agile-learning-institute/institute-person-api) repo's as siblings to this repo, and then you can run this script:
-
-```bash
-./docker-build-all-and-run.sh
-```
+The Dockerfile at the root of the project is a single-stage build that expects a /dist folder, and a text file called /dist/patch.txt to exist, see [docker-build.sh](./src/docker/docker-build.sh) for details. The Dockerfile in /src/docker is a two stage build used for CI.  
 
 ## Backlog
 

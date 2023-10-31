@@ -1,5 +1,9 @@
 *.DS_Store
 
+# db and api folders used to run containers
+db
+api
+
 # Logs
 logs
 *.log

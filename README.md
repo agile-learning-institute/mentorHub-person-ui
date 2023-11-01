@@ -30,13 +30,23 @@ This project contains a Vue SPA that uses an API from the institute-person-api p
 
 - [Mongo Compass](https://www.mongodb.com/try/download/compass) - if you want a way to look into the database
 
+### Setup an environment variable for project navigation
+
+Navigate to your institue-mongodb folder. Setup an environment variable to save this location. Use the environment variable to ensure you are in the proper pwd for each set of commands.
+
+```bash
+cd PATH_TO_REPO/institute-person-ui
+ROOT=$PWD
+echo $ROOT
+```
+
 ## Run Containers Locally
 
 ```bash
 curl https://raw.githubusercontent.com/agile-learning-institute/institute-person-ui/main/src/docker/run-local.sh | /bin/bash
 ```
 
-You can review the script at ./src/docker/run-local-api.sh.
+You can review the script at $ROOT/src/docker/run-local-api.sh.
 After a few seconds that command you should see something like this
 
 ```bash
@@ -82,13 +92,13 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 The Dockerfile expects the project to be built for production, and the ```/dist/patch.txt``` file to contain the current git hash.
 
 ```bash
-.src/docker-build.sh
+$ROOT/src/docker-build.sh
 ```
 
 ### Restart containers without loosing data
 
 ```bash
-cd ./src/docker
+cd $ROOT/src/docker
 docker compose stop
 docker compose start
 ```
@@ -96,7 +106,7 @@ docker compose start
 ### Restart containers and Reset test data
 
 ```bash
-cd ./src/docker
+cd $ROOT/src/docker
 docker compose down
 docker compose up --detach
 ```
@@ -124,7 +134,7 @@ NOTE: After you add a person you are automatically routed to the Edit Person pag
 
 The ```/admin``` route will return a list of configuration values.
 
-The Dockerfile at the root of the project is a single-stage build that expects a /dist folder, and a text file called /dist/patch.txt to exist, see [docker-build.sh](./src/docker/docker-build.sh) for details. The Dockerfile in /src/docker is a two stage build used for CI.  
+The Dockerfile at the root of the project is a single-stage build that expects a /dist folder, and a text file called /dist/patch.txt to exist, see [docker-build.sh]($ROOT/src/docker/docker-build.sh) for details. The Dockerfile in /src/docker is a two stage build used for CI.  
 
 ## Backlog
 

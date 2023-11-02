@@ -23,37 +23,17 @@ This project contains a Vue SPA that uses an API from the institute-person-api p
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
   - For Mac ```brew install docker```
-- [GitHub Containers Configured](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-with-a-personal-access-token-classic)
 - [NodeJS and NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) - if you want to build locally
 
 ### Optionally
 
 - [Mongo Compass](https://www.mongodb.com/try/download/compass) - if you want a way to look into the database
 
-## Run Containers Locally
-
-```bash
-curl https://raw.githubusercontent.com/agile-learning-institute/institute-person-ui/main/src/docker/run-local.sh | /bin/bash
-```
-
-You can review the script at ./src/docker/run-local-api.sh.
-After a few seconds that command you should see something like this
-
-```bash
- ✔ Network institute-person-ui_default                   Created
- ✔ Container institute-person-ui-institute-mongodb-1     Healthy
- ✔ Container institute-person-ui-institute-mongosh-1     Exited
- ✔ Container institute-person-ui-institute-person-api-1  Started
- ✔ Container institute-person-ui-institute-person-ui-1   Started
- ```
-
-You can now access the UI at the [Access Paths](#access-paths)
-
 ## For UI/UX Engineers
 
 ### Using the Database and API Containers
 
-If you want a local API, with test data preloaded, you can run the database and API containers independently. See [this repo](https://github.com/agile-learning-institute/institute-person-api) for instructions on how to run the containers.
+If you want a local API, with test data preloaded, you can [run the database and API containers](https://github.com/agile-learning-institute/institute/blob/main/docker-compose/README.md#run-the-person-api-and-backing-database) 
 
 ### Install Dependencies
 
@@ -79,26 +59,10 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### Manually build and test UI container
 
-The Dockerfile expects the project to be built for production, and the ```/dist/patch.txt``` file to contain the current git hash.
+After executing the docker-build script as outlined below, you can [start the person triplet](https://github.com/agile-learning-institute/institute/blob/main/docker-compose/README.md#run-the-person-triplet) to test your changes before opening a pull request.
 
 ```bash
 .src/docker-build.sh
-```
-
-### Restart containers without loosing data
-
-```bash
-cd ./src/docker
-docker compose stop
-docker compose start
-```
-
-### Restart containers and Reset test data
-
-```bash
-cd ./src/docker
-docker compose down
-docker compose up --detach
 ```
 
 ## Access Paths

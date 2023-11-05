@@ -1,37 +1,23 @@
 #!/bin/bash
-npm install
-if [ $? -ne 0 ]; then
-    echo "NPM Install failed"
-    exit 1
-fi
 
-npm run build
-# Get branch and patch level
-BRANCH=$(git branch --show-current)
-if [ $? -ne 0 ]; then
-    echo "Failed to get git branch"
-    exit 1
-fi
-
-PATCH=$(git rev-parse $BRANCH)
-if [ $? -ne 0 ]; then
-    echo "Failed to get git commit hash"
-    exit 1
-fi
-
-echo $BRANCH.$PATCH > ./dist/patch.txt
-
-# Build Docker image
-docker build . --tag ghcr.io/agile-learning-institute/institute-person-ui:latest
+# Build Docker Image
+docker build --file src/docker/Dockerfile --tag ghcr.io/agile-learning-institute/institute-person-ui:latest .
 if [ $? -ne 0 ]; then
     echo "Docker build failed"
     exit 1
 fi
 
-# Push Docker image
-if [ $1 -eq '--push' ]; then
+# Run the Database, API, and UI containers
+if [ "$1" = '--run' ]; then
+    curl https://raw.githubusercontent.com/agile-learning-institute/institute/main/docker-compose/run-local-person.sh | /bin/bash
+fi
+
+# Push Docker image (To be removed when CI works)
+if [ "$1" = '--push' ]; then
     docker push ghcr.io/agile-learning-institute/institute-person-ui:latest
     if [ $? -ne 0 ]; then
+    echo "Docker build failed"
+    exit 1
         echo "Docker push failed"
         exit 1
     fi

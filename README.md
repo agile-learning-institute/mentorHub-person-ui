@@ -4,36 +4,37 @@
 
 - [Overview](#overview)
 - [Prerequisits](#prerequisits)
-- [Run Containers Locally](#run-containers-locally)
-- [For UI/UX Engineers](#for-uiux-engineers)
-  - [Install Dependencies and Run](#install-dependencies)
-  - [Using the API Containers](#using-the-database-and-api-containers)
-  - [Buid and test containers locally](#manually-build-and-test-ui-container)
+- [Running Backing Services](#install-dependencies)
+- [Build and Running the UI](#build-and-run-the-ui)
+- [Buid and test containers locally](#manually-build-and-test-ui-container)
 - [Access Paths](#access-paths)
 - [Observability and Configuration](#observability-and-configuration)
 - [Backlog and Feature Branch info](#backlog)
 
 ## Overview
 
-This project contains a Vue SPA that uses an API from the institute-person-api project to manage a collection of people. This was kick-started using ChatGPT, by a polyglot software engineer that knew Javascript and had completed half of a VueJS developers course. See [here](https://chat.openai.com/share/5d5db6f2-2f42-491a-9673-3246feb20013) for the chat conversation that got me started.
+This project contains a Vue SPA that uses [this](https://github.com/agile-learning-institute/institute-person-api) API.
 
 [Here](https://github.com/orgs/agile-learning-institute/repositories?q=institute&type=all&sort=name) are all of the repositories in the [Institute](https://github.com/agile-learning-institute/institute/tree/main) system
 
 ## Prerequisits
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
-  - For Mac ```brew install docker```
 - [NodeJS and NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) - if you want to build locally
 
 ### Optionally
 
 - [Mongo Compass](https://www.mongodb.com/try/download/compass) - if you want a way to look into the database
 
-## For UI/UX Engineers
-
 ### Using the Database and API Containers
 
-If you want a local API, with test data preloaded, you can [run the database and API containers](https://github.com/agile-learning-institute/institute/blob/main/docker-compose/README.md#run-the-person-api-and-backing-database) 
+To run the API and Test Database locally, you can use the following command. See [here for details](https://github.com/agile-learning-institute/institute/blob/main/docker-compose/README.md) on how to stop/start the database.
+
+```bash
+curl https://raw.githubusercontent.com/agile-learning-institute/institute/main/docker-compose/run-local-person-api.sh | /bin/bash
+```
+
+## Build and Run the UI
 
 ### Install Dependencies
 
@@ -59,10 +60,10 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### Manually build and test UI container
 
-After executing the docker-build script as outlined below, you can [start the person triplet](https://github.com/agile-learning-institute/institute/blob/main/docker-compose/README.md#run-the-person-triplet) to test your changes before opening a pull request.
+After executing the docker-build script as outlined below, you can use the following command to build and run the container. You can then use the [Access Paths](#access-paths) to test the applicaiton.
 
 ```bash
-.src/docker-build.sh
+.src/docker-build.sh --run
 ```
 
 ## Access Paths

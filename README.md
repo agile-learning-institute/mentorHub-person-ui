@@ -63,7 +63,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 After executing the docker-build script as outlined below, you can use the following command to build and run the container. You can then use the [Access Paths](#access-paths) to test the applicaiton.
 
 ```bash
-.src/docker-build.sh --run
+.src/docker-build.sh 
 ```
 
 ## Access Paths

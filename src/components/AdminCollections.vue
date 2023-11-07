@@ -8,6 +8,9 @@
         <div class="flex-subitem">
           {{ item.version }}
         </div>
+        <div class="flex-subitem">
+          {{ item.filter }}
+        </div>
       </li>
     </ul>
   </div>
@@ -46,6 +49,6 @@ export default {
 .flex-subitem {
   flex: 1;
   text-align: left;
-  width: 45%;
+  width: 30%;
 }
 </style>

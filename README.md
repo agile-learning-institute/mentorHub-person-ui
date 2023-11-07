@@ -89,7 +89,7 @@ NOTE: After you add a person you are automatically routed to the Edit Person pag
 
 The ```/admin``` route will return a list of configuration values.
 
-The Dockerfile at the root of the project is a single-stage build that expects a /dist folder, and a text file called /dist/patch.txt to exist, see [docker-build.sh](./src/docker/docker-build.sh) for details. The Dockerfile in /src/docker is a two stage build used for CI.  
+The Dockerfile uses a 2-stage build, and supports multi-architecture builds. See [docker-build.sh](./src/docker/docker-build.sh) for details about building in the local architecture for testing. See [docker-push.sh](./src/docker/docker-push.sh) for details about building and pushing multi-architecture images.
 
 ## Backlog
 

@@ -31,7 +31,7 @@ This project contains a Vue SPA that uses [this](https://github.com/agile-learni
 To run the API and Test Database locally, you can use the following command. See [here for details](https://github.com/agile-learning-institute/institute/blob/main/docker-compose/README.md) on how to stop/start the database.
 
 ```bash
-curl https://raw.githubusercontent.com/agile-learning-institute/institute/main/docker-compose/run-local-person-api.sh | /bin/bash
+curl https://raw.githubusercontent.com/agile-learning-institute/mentorhub/main/docker-compose/run-local-person-api.sh | /bin/bash
 ```
 
 ## Build and Run the UI
@@ -89,7 +89,7 @@ NOTE: After you add a person you are automatically routed to the Edit Person pag
 
 The ```/admin``` route will return a list of configuration values.
 
-The Dockerfile uses a 2-stage build, and supports multi-architecture builds. See [docker-build.sh](./src/docker/docker-build.sh) for details about building in the local architecture for testing. See [docker-push.sh](./src/docker/docker-push.sh) for details about building and pushing multi-architecture images.
+The Dockerfile uses a 2-stage build, and supports multi-architecture builds. See [docker-build.sh](./src/docker/docker-build.sh) for details about building in the local architecture for testing.
 
 ## Backlog
 

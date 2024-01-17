@@ -1,4 +1,4 @@
-# institute-person-ui
+# mentorhub-person-ui
 
 ## Table of Contents
 

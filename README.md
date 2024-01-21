@@ -31,7 +31,7 @@ This project contains a Vue SPA that uses [this](https://github.com/agile-learni
 To run the API and Test Database locally, you can use the following command. See [here for details](https://github.com/agile-learning-institute/institute/blob/main/docker-compose/README.md) on how to stop/start the database.
 
 ```bash
-curl https://raw.githubusercontent.com/agile-learning-institute/mentorhub/main/docker-compose/run-local-person-api.sh | /bin/bash
+/bin/bash =(curl -o - https://raw.githubusercontent.com/agile-learning-institute/mentorhub/main/docker-configurations/run-local.sh) person-api
 ```
 
 ## Build and Run the UI

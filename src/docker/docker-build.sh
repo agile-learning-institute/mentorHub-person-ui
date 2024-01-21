@@ -7,4 +7,4 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-curl https://raw.githubusercontent.com/agile-learning-institute/institute/mentorhub/docker-compose/run-local-person.sh | /bin/bash
+/bin/bash =(curl -o - https://raw.githubusercontent.com/agile-learning-institute/mentorhub/main/docker-configurations/run-local.sh) person

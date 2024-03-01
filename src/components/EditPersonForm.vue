@@ -13,6 +13,7 @@
         <v-text-field label="Status" @change="saveMe($event, 'status')" v-model="person.status"></v-text-field>
         <v-text-field label="Notes" @change="saveMe($event, 'description')" v-model="person.description"></v-text-field>
         <v-text-field label="Title" @change="saveMe($event, 'title')" v-model="person.title"></v-text-field>
+        <v-text-field label="Cadence" @change="saveMe($event, 'cadence')" v-model="person.cadence"></v-text-field>
         <v-text-field label="Email" @change="saveMe($event, 'eMail')" v-model="person.eMail"></v-text-field>
         <v-text-field label="GitHub" @change="saveMe($event, 'gitHub')" v-model="person.gitHub"></v-text-field>
         <v-text-field label="Phone" @change="saveMe($event, 'phone')" v-model="person.phone"></v-text-field>

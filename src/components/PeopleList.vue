@@ -18,7 +18,11 @@
 			<tbody>
 				<tr v-for="person in people" :key="person.ID">
 					<td class="text-left">{{ person.name }}</td>
-					<td class="text-left"><v-btn>Edit</v-btn></td>
+					<td class="text-left">
+						<v-btn :href="editPersonLink(person.ID)" target="_blank"
+							>Edit</v-btn
+						>
+					</td>
 				</tr>
 			</tbody>
 		</v-table>

@@ -19,7 +19,7 @@ This project contains a Vue SPA that uses [this](https://github.com/agile-learni
 
 ## Prerequisits
 
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- [mentorHub Developer Edition](https://github.com/agile-learning-institute/mentorHub/blob/main/mentorHub-developer-edition/README.md)
 - [NodeJS and NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) - if you want to build locally
 
 ### Optionally
@@ -28,10 +28,10 @@ This project contains a Vue SPA that uses [this](https://github.com/agile-learni
 
 ### Using the Database and API Containers
 
-To run the API and Test Database locally, you can use the following command. See [here for details](https://github.com/agile-learning-institute/institute/blob/main/docker-compose/README.md) on how to stop/start the database.
+To run the API and Test Database locally, you can use the following command. 
 
 ```bash
-/bin/bash <(curl -o - https://raw.githubusercontent.com/agile-learning-institute/mentorhub/main/docker-configurations/run-local.sh) person-api
+mh up person-api
 ```
 
 ## Build and Run the UI
@@ -90,42 +90,3 @@ NOTE: After you add a person you are automatically routed to the Edit Person pag
 The ```/admin``` route will return a list of configuration values.
 
 The Dockerfile uses a 2-stage build, and supports multi-architecture builds. See [docker-build.sh](./src/docker/docker-build.sh) for details about building in the local architecture for testing.
-
-## Backlog
-
-- [x] Update Admin page with CI List
-- [x] Implement UI Version Info
-- [x] Containerize Build from Ngnix - Comopse with API/DB
-- [x] Add /people route with links to /person/[id]
-- [x] Update PersonForm with new fields from API
-- [x] Patch updates with only dirty values
-- [x] On-Blur auto save with Saving indicator
-- [x] Implement Save error handling with generic "invalid" message
-- [x] Open new/edit vues in new tab
-- [x] Add New Person link to /people
-
-- Feature Branch ```implement-vuex-store```
-  - [x] Add improved page name from context in routes (list, new, name, admin)
-  - [x] Properly Implment Store with Admin, Person Mutations
-  - [x] Load Enums for pick lists at page load
-  - [x] Add Collections list to Admin Page
-  - [x] Add enumirators panels to admin page (Mentors, Partners, Enums by Name)
-  - [x] Implement v-expansion-panel to collapse CI and Collection Lsts
-  - [x] Fix non-scoped styles in PeopleForm.vue component
-
-- Feature Branch ```improve-validations```
-  - [ ] Add v-select selectors for Mentor, Partner, Status, Device, Title
-  - [ ] Add size limiters to name, description, eMail, gitHub, location
-  - [ ] Add validators for eMail, phone
-  - [ ] Add better error messaging where needed (duplicate name error)
-
-- Feature Branch ```search-people```
-  - [ ] Add pagination with endless scroll to /people route
-  - [ ] Add search to /people route
-
-- Feature Branch ```secure-api-access```
-  - [ ] Add JWT authentication
-
-- Others
-  - [ ] Add unit testing
-  - [ ] Add cypress testing

@@ -1,7 +1,7 @@
 <template>
     <div>
       <h1>Edit Person</h1>
-      <v-form v-model="form" ref="form">
+      <v-form>
         <!-- <v-text-field label="ID" v-if="mode==='edit'" v-bind:model-value="$route.params.id" v-bind:readonly="true"></v-text-field> -->
         <v-text-field label="Name" @change="saveMe($event, 'name')" v-model="person.name" required></v-text-field>
         <div class="flex-container">
@@ -10,17 +10,17 @@
           <v-checkbox class="flex-item" label="Donor" @change="saveMe($event, 'donor')" v-model="person.donor"></v-checkbox>
           <v-checkbox class="flex-item" label="Contact" @change="saveMe($event, 'contact')" v-model="person.contact"></v-checkbox>
         </div>
-        <v-select label="Status" @change="saveMe($event, 'status')" v-model="person.status" :items="people.status" clearable></v-select>
+        <v-select label="Status" @update:model-value="saveMe($event, 'status')" v-model="person.status" :items="people.status" clearable></v-select>
         <v-text-field label="Notes" @change="saveMe($event, 'description')" :rules="[rules.descriptionCount]" v-model="person.description"></v-text-field>
-        <v-select label="Title" @change="saveMe($event, 'title')" v-model="person.title" :items="people.title" clearable></v-select>
-        <v-select label="Cadence" @change="saveMe($event, 'cadence')" v-model="person.cadence" :items="people.cadence" clearable></v-select>
+        <v-select label="Title" @update:model-value="saveMe($event, 'title')" v-model="person.title" :items="people.title" clearable></v-select>
+        <v-select label="Cadence" @update:model-value="saveMe($event, 'cadence')" v-model="person.cadence" :items="people.cadence" clearable></v-select>
         <v-text-field label="Email" @change="saveMe($event, 'eMail')" :rules="[rules.required, rules.emailCount, rules.emailPattern]" v-model="person.eMail"></v-text-field>
         <v-text-field label="GitHub" @change="saveMe($event, 'gitHub')" :rules="[rules.githubCount]" v-model="person.gitHub"></v-text-field>
         <v-text-field label="Phone" @change="saveMe($event, 'phone')" :rules="[rules.required, rules.phonePattern]" v-model="person.phone"></v-text-field>
-        <v-select label="Device" @change="saveMe($event, 'device')" v-model="person.device" :items="people.device" clearable></v-select>
+        <v-select label="Device" @update:model-value="saveMe($event, 'device')" v-model="person.device" :items="people.device" clearable></v-select>
         <v-text-field label="Location" @change="saveMe($event, 'location')" :rules="[rules.locationCount]" v-model="person.location"></v-text-field>
-        <v-select label="MentorName" @change="saveMe($event, 'mentorName')" v-model="mentorName" :items="config.mentors" item-title="name" item-value="_id" clearable return-object></v-select>
-        <v-select label="PartnerName" @change="saveMe($event, 'partnerName')" v-model="partnerName" :items="config.partners" item-title="name" item-value="_id" clearable return-object></v-select>
+        <v-select label="MentorName" @update:model-value="saveMe($event, 'mentorId')" v-model="getName.mentorName" :items="config.mentors" item-title="name" item-value="ID" clearable return-object></v-select>
+        <v-select label="PartnerName" @update:model-value="saveMe($event, 'partnerId')" v-model="getName.partnerName" :items="config.partners" item-title="name" item-value="ID" clearable return-object></v-select>
       </v-form>
     </div>
 </template>
@@ -42,16 +42,15 @@ export default {
         device: Object.keys(this.config.enums.people.device),
       } : {};
     },
-    mentorName() {
-      return this.config.mentors ? this.config.mentors.filter(mentor => mentor.ID === this.person.mentorId)[0]?.name : "";
+    getName() {
+      const mentorName = this.config["mentors"] ? this.config["mentors"].filter(mentor => mentor.ID === this.person.mentorId)[0]?.name : "";
+      const partnerName = this.config["partners"] ? this.config["partners"].filter(partner => partner.ID === this.person.partnerId)[0]?.name : "";
+
+      return {mentorName, partnerName}
     },
-    partnerName() {
-      return this.config.partners ? this.config.partners.filter(partner => partner.ID === this.person.partnerId)[0]?.name : "";
-    }
   },
   data() {
     return {
-      form: false,
       rules: {
         required: value => !!value || "This is a required field",
         emailPattern: value => /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value) || "Invalid email",
@@ -69,8 +68,11 @@ export default {
   },  
   methods: {
     async saveMe(event, fieldName) {
-      const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
-      
+      const value = typeof event === 'string' ? event 
+        : event.name && event.ID ? event.ID
+        : event.target.type === 'checkbox' ? event.target.checked 
+        : event.target.value;
+
       try {
         await this.$store.dispatch('patchPerson', {
           id: this.$route.params.id,
@@ -79,7 +81,7 @@ export default {
         });
       } catch (error) {
         alert(error.message);
-        event.target.focus();
+        event.target?.focus();
       }
     }
   }

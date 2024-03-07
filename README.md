@@ -61,14 +61,14 @@ Build the UI container and run the full stack. If you are running the dev server
 
 You should now have access to the application, you can access the following pages
 
-- Admin Screen [http://localhost:8081/admin](http://localhost:8081/admin)
-- Default [http://localhost:8081/](http://localhost:8081/) routes to List People
+- Admin Screen [http://localhost:8083/admin](http://localhost:8083/admin)
+- Default [http://localhost:8083/](http://localhost:8083/) routes to List People
 
 You can also access the List, Add and Edit views directly at
 
-- List People [http://localhost:8081/people](http://localhost:8081/people)
-- Add Person [http://localhost:8081/person](http://localhost:8081/person)
-- Edit Person [http://localhost:8081/person/aaaa00000000000000000021](http://localhost:8081/person/aaaa00000000000000000021)
+- List People [http://localhost:8083/people](http://localhost:8083/people)
+- Add Person [http://localhost:8083/person](http://localhost:8083/person)
+- Edit Person [http://localhost:8083/person/aaaa00000000000000000021](http://localhost:8083/person/aaaa00000000000000000021)
 
 NOTE: After you add a person you are automatically routed to the Edit Person page for that person. You can change the ID in the Edit Person URI to edit other people.
 

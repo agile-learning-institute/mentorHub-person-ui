@@ -1,16 +1,5 @@
 # mentorhub-person-ui
 
-## Table of Contents
-
-- [Overview](#overview)
-- [Prerequisits](#prerequisits)
-- [Running Backing Services](#install-dependencies)
-- [Build and Running the UI](#build-and-run-the-ui)
-- [Buid and test containers locally](#manually-build-and-test-ui-container)
-- [Access Paths](#access-paths)
-- [Observability and Configuration](#observability-and-configuration)
-- [Backlog and Feature Branch info](#backlog)
-
 ## Overview
 
 This project contains a Vue SPA that uses [this](https://github.com/agile-learning-institute/institute-person-api) API.
@@ -26,15 +15,15 @@ This project contains a Vue SPA that uses [this](https://github.com/agile-learni
 
 - [Mongo Compass](https://www.mongodb.com/try/download/compass) - if you want a way to look into the database
 
-### Using the Database and API Containers
+## Running Locally
 
-To run the API and Test Database locally, you can use the following command. 
+To run the full UI and backing services locally
 
 ```bash
-mh up person-api
+mh up person
 ```
 
-## Build and Run the UI
+## Using the Database and API Containers
 
 ### Install Dependencies
 
@@ -42,9 +31,11 @@ mh up person-api
 npm install
 ```
 
-### Run Dev-Server
+### Run backing services and local UI
+To run just the API and Test Database in containers and test locally, you can use the following command. 
 
-``` bash
+```bash
+mh up person-api
 npm run serve
 ```
 
@@ -60,7 +51,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### Manually build and test UI container
 
-After executing the docker-build script as outlined below, you can use the [Access Paths](#access-paths) to test the applicaiton.
+Build the UI container and run the full stack. If you are running the dev server, stop it before running this script.
 
 ```bash
 ./src/docker/docker-build.sh
@@ -68,20 +59,16 @@ After executing the docker-build script as outlined below, you can use the [Acce
 
 ## Access Paths
 
-### A word on ports
-
-NOTE: If you are running the UI in developer mode, you can access the app on port 8080. If you are running the application from containers, you can access the UI at the default HTTP port of 80.
-
 You should now have access to the application, you can access the following pages
 
-- Admin Screen [http://localhost/admin](http://localhost/admin)
-- Default [http://localhost/](http://localhost/) routes to List People
+- Admin Screen [http://localhost:8081/admin](http://localhost:8081/admin)
+- Default [http://localhost:8081/](http://localhost:8081/) routes to List People
 
 You can also access the List, Add and Edit views directly at
 
-- List People [http://localhost/people](http://localhost/people)
-- Add Person [http://localhost/person](http://localhost/person)
-- Edit Person [http://localhost/person/[id]](http://localhost/person/[id])
+- List People [http://localhost:8081/people](http://localhost:8081/people)
+- Add Person [http://localhost:8081/person](http://localhost:8081/person)
+- Edit Person [http://localhost:8081/person/aaaa00000000000000000021](http://localhost:8081/person/aaaa00000000000000000021)
 
 NOTE: After you add a person you are automatically routed to the Edit Person page for that person. You can change the ID in the Edit Person URI to edit other people.
 

@@ -23,12 +23,10 @@ const store = createStore({
   },
   actions: {
     async initializeStore({ commit }) {
-      const apiHost = process.env.VUE_APP_API_HOST;
-      const apiPort = process.env.VUE_APP_API_PORT;
-      const enumsUrl = `${apiHost}:${apiPort}/api/enums/`;
-      const configUrl = `${apiHost}:${apiPort}/api/config/`;
-      const partnerUrl = `${apiHost}:${apiPort}/api/partners/`;
-      const mentorsUrl = `${apiHost}:${apiPort}/api/mentors/`;
+      const enumsUrl = `/api/enums/`;
+      const configUrl = `/api/config/`;
+      const partnerUrl = `/api/partners/`;
+      const mentorsUrl = `/api/mentors/`;
       const parms = {params: {_: new Date().getTime()}} // prevent cache on flat API calls
 
       try {
@@ -51,9 +49,7 @@ const store = createStore({
       }
     },
     async getPerson({ commit }, id) {
-      const apiHost = process.env.VUE_APP_API_HOST;
-      const apiPort = process.env.VUE_APP_API_PORT;
-      const apiUrlWithId = `${apiHost}:${apiPort}/api/person/${id}`;
+      const apiUrlWithId = `/api/person/${id}`;
   
       try {
         const response = await axios.get(apiUrlWithId);
@@ -63,9 +59,7 @@ const store = createStore({
       }
     },
     async patchPerson({ commit }, { id, fieldName, value }) {
-      const apiHost = process.env.VUE_APP_API_HOST;
-      const apiPort = process.env.VUE_APP_API_PORT;
-      const apiUrlWithId = `${apiHost}:${apiPort}/api/person/${id}`;
+      const apiUrlWithId = `/api/person/${id}`;
       
       const payload = { [fieldName]: value };
       
@@ -79,9 +73,7 @@ const store = createStore({
       }
     },    
     async postPerson({ state, commit }) {
-      const apiHost = process.env.VUE_APP_API_HOST;
-      const apiPort = process.env.VUE_APP_API_PORT;
-      const apiUrlWithoutId = `${apiHost}:${apiPort}/api/person/`;
+      const apiUrlWithoutId = `/api/person/`;
 
       const payload = state.person;
       console.log("payload:", payload);

@@ -56,9 +56,7 @@ export default {
 			}
 		},
 		async getData() {
-			const apiHost = process.env.VUE_APP_API_HOST;
-			const apiPort = process.env.VUE_APP_API_PORT;
-			const apiUrl = `${apiHost}:${apiPort}/api/person/`;
+			const apiUrl = `/api/person/`;
 
 			try {
 				// create parameter to prevent cache on flat API calls

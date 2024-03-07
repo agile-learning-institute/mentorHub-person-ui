@@ -24,7 +24,8 @@ FROM nginx:stable-alpine as deploy
 
 # Copy built assets from build stage to nginx serving directory
 COPY --from=build /app/dist /usr/share/nginx/html
-COPY --from=build /app/src/docker/nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /app/src/docker/default.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /app/src/docker/nginx.conf /etc/nginx/nginx.conf
 
 # Expose port 80
 EXPOSE 80

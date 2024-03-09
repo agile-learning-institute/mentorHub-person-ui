@@ -23,20 +23,11 @@ const store = createStore({
   },
   actions: {
     async initializeStore({ commit }) {
-      const enumsUrl = `/api/enums/`;
       const configUrl = `/api/config/`;
-      const partnerUrl = `/api/partners/`;
-      const mentorsUrl = `/api/mentors/`;
       const parms = {params: {_: new Date().getTime()}} // prevent cache on flat API calls
 
       try {
         const configResponse = await axios.get(configUrl, parms);
-        const enumsResponse = await axios.get(enumsUrl, parms);
-        const partnerResponse = await axios.get(partnerUrl, parms);
-        const mentorsRepsonse = await axios.get(mentorsUrl, parms);
-        configResponse.data.enums = enumsResponse.data[0];
-        configResponse.data.partners = partnerResponse.data;
-        configResponse.data.mentors = mentorsRepsonse.data
 
         const patchResponse = await axios.get('/patch.txt', parms);
         const patchValue = patchResponse.data.trim();

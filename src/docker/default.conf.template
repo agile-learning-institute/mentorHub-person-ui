@@ -29,6 +29,6 @@ server {
     error_log /var/log/nginx/error.log;
 
     location /api/ {
-        proxy_pass http://mentorhub-person-api:8082/api/;
+        proxy_pass http://${API_HOST}:${API_PORT}/api/;
     }
 }

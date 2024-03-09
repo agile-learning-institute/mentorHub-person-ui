@@ -25,7 +25,7 @@ export default {
       try {
         const response = await this.$store.dispatch('postPerson');
         console.log("response", response);
-        this.$router.push({ name: 'EditPerson', params: { id: response._id } });
+        this.$router.push({ name: 'EditPerson', params: { id: response.ID } });
       } catch (error) {
         alert(error.message);
       }

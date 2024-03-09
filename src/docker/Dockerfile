@@ -15,9 +15,8 @@ RUN npm run build
 
 # Get branch and patch level, then create patch.txt file
 RUN BRANCH=$(git rev-parse --abbrev-ref HEAD) && \
-    PATCH=$(git rev-parse HEAD) && \
     DATE=$(date "+%Y-%m-%d:%H:%M:%S") && \
-    echo $DATE.$BRANCH.$PATCH > ./dist/patch.txt
+    echo $DATE.$BRANCH > ./dist/patch.txt
 
 # Deployment stage
 FROM nginx:stable-alpine as deploy

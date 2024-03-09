@@ -3,7 +3,9 @@
       <h1>Edit Person</h1>
       <v-form>
         <!-- <v-text-field label="ID" v-if="mode==='edit'" v-bind:model-value="$route.params.id" v-bind:readonly="true"></v-text-field> -->
-        <v-text-field label="Name" @change="saveMe($event, 'name')" v-model="person.name" required></v-text-field>
+        <v-text-field label="User Name" @change="saveMe($event, 'userName')" v-model="person.userName" required></v-text-field>
+        <v-text-field label="First Name" @change="saveMe($event, 'firstName')" v-model="person.firstName" required></v-text-field>
+        <v-text-field label="Last Name" @change="saveMe($event, 'lastName')" v-model="person.lastName" required></v-text-field>
         <div class="flex-container">
           <v-checkbox class="flex-item" label="Member" @change="saveMe($event, 'member')" v-model="person.member"></v-checkbox>
           <v-checkbox class="flex-item" label="Mentor" @change="saveMe($event, 'mentor')" v-model="person.mentor"></v-checkbox>

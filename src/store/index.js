@@ -12,7 +12,7 @@ const store = createStore({
     SET_PERSON(state, payload) {
       state.person = payload;
       state.before = payload;
-      document.title = state.person.name;
+      document.title = state.person.userName;
     },
     SET_CONFIG(state, payload) {
       state.config = payload;

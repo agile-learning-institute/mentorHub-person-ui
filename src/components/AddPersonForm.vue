@@ -3,7 +3,7 @@
       <h1>Add Person</h1>
       <v-form>
         <!-- <v-text-field label="ID" v-if="mode==='edit'" v-bind:model-value="$route.params.id" v-bind:readonly="true"></v-text-field> -->
-        <v-text-field label="Name" v-model="person.name" required></v-text-field>
+        <v-text-field label="User Name" v-model="person.userName" required></v-text-field>
         <v-btn @click="newPerson">Create New Person</v-btn>
       </v-form>
     </div>

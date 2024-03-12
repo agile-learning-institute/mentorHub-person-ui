@@ -6,12 +6,8 @@
         <v-text-field label="User Name" @change="saveMe($event, 'userName')" v-model="person.userName" required></v-text-field>
         <v-text-field label="First Name" @change="saveMe($event, 'firstName')" v-model="person.firstName" required></v-text-field>
         <v-text-field label="Last Name" @change="saveMe($event, 'lastName')" v-model="person.lastName" required></v-text-field>
-        <div class="flex-container">
-          <v-checkbox class="flex-item" label="Member" @change="saveMe($event, 'member')" v-model="person.member"></v-checkbox>
-          <v-checkbox class="flex-item" label="Mentor" @change="saveMe($event, 'mentor')" v-model="person.mentor"></v-checkbox>
-          <v-checkbox class="flex-item" label="Donor" @change="saveMe($event, 'donor')" v-model="person.donor"></v-checkbox>
-          <v-checkbox class="flex-item" label="Contact" @change="saveMe($event, 'contact')" v-model="person.contact"></v-checkbox>
-        </div>
+        
+        <v-select label="Roles" @update:model-value="saveMe($event, 'roles')" v-model="person.roles" :items="people.roles" clearable multiple></v-select>
         <v-select label="Status" @update:model-value="saveMe($event, 'status')" v-model="person.status" :items="people.status" clearable></v-select>
         <v-text-field label="Notes" @change="saveMe($event, 'description')" :rules="[rules.descriptionCount]" v-model="person.description"></v-text-field>
         <v-select label="Title" @update:model-value="saveMe($event, 'title')" v-model="person.title" :items="people.title" clearable></v-select>
@@ -38,6 +34,7 @@ export default {
     }),
     people() {
       return this.config.enums?.people ? {
+        roles: Object.keys(this.config.enums.people.roles),
         status: Object.keys(this.config.enums.people.status),
         title: Object.keys(this.config.enums.people.title),
         cadence: Object.keys(this.config.enums.people.cadence),
@@ -70,9 +67,8 @@ export default {
   },  
   methods: {
     async saveMe(event, fieldName) {
-      const value = typeof event === 'string' ? event 
+      const value = typeof event === 'string' || Array.isArray(event) ? event 
         : event.name && event.ID ? event.ID
-        : event.target.type === 'checkbox' ? event.target.checked 
         : event.target.value;
 
       try {

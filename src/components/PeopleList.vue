@@ -7,6 +7,11 @@
 					Add New Person
 				</v-btn>
 			</a>
+			<a :href="adminLink()" target="_blank">
+				<v-btn size="large" variant="tonal" class="bg-blue">
+					Admin
+				</v-btn>
+			</a>
 		</div>
 		<v-table>
 			<thead>
@@ -76,6 +81,10 @@ export default {
 			return this.$router.resolve({ name: "EditPerson", params: { id: id } })
 				.href;
 		},
+		adminLink() {
+			// Generates link for Admin route
+			return this.$router.resolve({ name: "Admin" }).href;
+		},
 	},
 };
 </script>
@@ -83,5 +92,10 @@ export default {
 <style scoped>
 tbody tr:nth-of-type(odd) {
 	background-color: rgba(0, 0, 0, 0.05);
+}
+.mb-5 {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 </style>

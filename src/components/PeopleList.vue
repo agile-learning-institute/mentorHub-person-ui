@@ -1,14 +1,14 @@
 <template>
 	<v-container>
 		<h1 class="text-left">People</h1>
-		<div class="mb-5">
+		<div class="mb-5 mt-5 d-flex justify-space-between">
 			<a :href="newPersonLink()" target="_blank">
 				<v-btn size="large" variant="tonal" class="bg-grey-lighten-5">
 					Add New Person
 				</v-btn>
 			</a>
 			<a :href="adminLink()" target="_blank">
-				<v-btn size="large" variant="tonal" class="bg-blue">
+				<v-btn size="large" variant="tonal" class="bg-grey-lighten-5">
 					Admin
 				</v-btn>
 			</a>
@@ -92,10 +92,5 @@ export default {
 <style scoped>
 tbody tr:nth-of-type(odd) {
 	background-color: rgba(0, 0, 0, 0.05);
-}
-.mb-5 {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
 }
 </style>

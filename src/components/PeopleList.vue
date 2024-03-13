@@ -1,10 +1,15 @@
 <template>
 	<v-container>
 		<h1 class="text-left">People</h1>
-		<div class="mb-5">
+		<div class="mb-5 mt-5 d-flex justify-space-between">
 			<a :href="newPersonLink()" target="_blank">
 				<v-btn size="large" variant="tonal" class="bg-grey-lighten-5">
 					Add New Person
+				</v-btn>
+			</a>
+			<a :href="adminLink()" target="_blank">
+				<v-btn size="large" variant="tonal" class="bg-grey-lighten-5">
+					Admin
 				</v-btn>
 			</a>
 		</div>
@@ -75,6 +80,10 @@ export default {
 			// Generate the link for EditPerson route
 			return this.$router.resolve({ name: "EditPerson", params: { id: id } })
 				.href;
+		},
+		adminLink() {
+			// Generates link for Admin route
+			return this.$router.resolve({ name: "Admin" }).href;
 		},
 	},
 };

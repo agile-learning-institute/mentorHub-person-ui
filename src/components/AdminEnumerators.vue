@@ -31,7 +31,7 @@ export default {
 	},
 	methods: {
 		shouldBeDisplayed(name) {
-			return name !== "_id" && name !== "name" && name !== "status";
+			return name !== "_id";
 		},
 	},
 };

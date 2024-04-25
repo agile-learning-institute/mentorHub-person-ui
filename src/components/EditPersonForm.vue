@@ -6,7 +6,7 @@
         <v-text-field label="User Name" @change="saveMe($event, 'userName')" v-model="person.userName" required></v-text-field>
         <v-text-field label="First Name" @change="saveMe($event, 'firstName')" v-model="person.firstName" required></v-text-field>
         <v-text-field label="Last Name" @change="saveMe($event, 'lastName')" v-model="person.lastName" required></v-text-field>
-        
+
         <v-select label="Roles" @update:model-value="saveMe($event, 'roles')" v-model="person.roles" :items="people.roles" multiple></v-select>
         <v-select label="Status" @update:model-value="saveMe($event, 'status')" v-model="person.status" :items="people.status"></v-select>
         <v-text-field label="Notes" @change="saveMe($event, 'description')" :rules="[rules.descriptionCount]" v-model="person.description"></v-text-field>
@@ -22,7 +22,7 @@
       </v-form>
     </div>
 </template>
-  
+
 <script>
 import { mapState } from 'vuex';
 
@@ -33,12 +33,12 @@ export default {
       config: state => state.config,
     }),
     people() {
-      return this.config.enums?.people ? {
-        roles: Object.keys(this.config.enums.people.roles),
-        status: Object.keys(this.config.enums.people.status),
-        title: Object.keys(this.config.enums.people.title),
-        cadence: Object.keys(this.config.enums.people.cadence),
-        device: Object.keys(this.config.enums.people.device),
+      return this.config.enums ? {
+        roles: Object.keys(this.config.enums.roles),
+        status: Object.keys(this.config.enums.personStatus),
+        title: Object.keys(this.config.enums.title),
+        cadence: Object.keys(this.config.enums.cadence),
+        device: Object.keys(this.config.enums.device),
       } : {};
     },
     getName() {
@@ -64,10 +64,10 @@ export default {
   },
   mounted() {
     this.$store.dispatch('getPerson', this.$route.params.id);
-  },  
+  },
   methods: {
     async saveMe(event, fieldName) {
-      const value = typeof event === 'string' || Array.isArray(event) ? event 
+      const value = typeof event === 'string' || Array.isArray(event) ? event
         : event.name && event.ID ? event.ID
         : event.target.value;
 

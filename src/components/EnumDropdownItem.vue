@@ -79,6 +79,9 @@ export default {
 	padding: 0;
   font-size: 1.3rem;
 }
+.list-items {
+	padding: .5rem;
+}
 
 li {
 	list-style: none;

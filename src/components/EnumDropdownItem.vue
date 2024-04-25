@@ -3,14 +3,14 @@
 
       <v-expansion-panel>
         <template v-slot:title>
-          <button class="v-expansion-panel-title enum-title" type="button" aria-expanded="false" >
+          <button class="v-expansion-panel-title enum-title bold" type="button" aria-expanded="false" >
             {{ collectionName }}
           </button>
         </template>
         <template v-slot:text>
 					<ul class="list-items">
 
-						<div v-for="(values, propertyName) in properties" :key="propertyName" class=" wide">
+						<div v-for="(values, propertyName) in properties" :key="propertyName" class="box wide">
 							<li>
 
 								<div class="left">
@@ -67,20 +67,20 @@ export default {
 
 .box {
 	margin: 5px;
-	/* padding: 10px; */
+	padding: 10px;
 	border: 1px solid #ccc;
 	border-radius: 1px;
 
 }
 .enum-title{
 	padding: 0;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 .list-items {
-	/* padding: .5rem; */
+	padding: .5rem;
 }
 li {
-	list-style-type: square;
+	list-style: none;
 }
 </style>
 ./EnumDropdownItem.vue

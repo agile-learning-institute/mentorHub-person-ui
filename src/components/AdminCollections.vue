@@ -1,12 +1,12 @@
 <template>
-  <div>    
+  <div>
     <ul class="flex-container">
-      <li v-for="item in config.Stores" :key="item.collectionName" class="flex-item">
+      <li v-for="item in config.versions" :key="item.collectionName" class="flex-item">
         <div class="flex-subitem">
           {{ item.collectionName }}
         </div>
         <div class="flex-subitem">
-          {{ item.version }}
+          {{ item.currentVersion }}
         </div>
         <div class="flex-subitem">
           {{ item.filter }}
@@ -15,14 +15,14 @@
     </ul>
   </div>
 </template>
-  
+
 <script>
 import { mapState } from 'vuex';
 
 export default {
   computed: {
     ...mapState(['config'])
-  },
+  }
 };
 
 </script>

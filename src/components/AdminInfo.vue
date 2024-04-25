@@ -27,7 +27,7 @@
     </v-expansion-panels>
   </div>
 </template>
-  
+
 <script>
 import { mapState } from 'vuex';
 import AdminConfigItems from './AdminConfigItems.vue'
@@ -47,7 +47,7 @@ export default {
   },
   mounted() {
     document.title = 'Configuration';
-  },  
+  },
 };
 
 </script>

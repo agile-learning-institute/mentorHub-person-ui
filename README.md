@@ -34,6 +34,11 @@ npm run serve
 ```
 This will start API and backing service containers to support testing.
 
+## Lints and fixes files
+``` bash
+npm run lint
+```
+
 ## Build a production deployment package
 ``` bash
 npm run build
@@ -43,11 +48,7 @@ npm run build
 ``` bash
 npm run container
 ```
-
-## Lints and fixes files
-``` bash
-npm run lint
-```
+This will build the UI container and launch the UI service. After launched you can the access Paths below
 
 ## Access Paths
 After running the appropiate command, you can access the API following routes

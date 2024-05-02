@@ -3,9 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "preserve": "mh up person-api",
     "serve": "vue-cli-service serve --port 8083",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "precontainer": "docker build --tag ghcr.io/agile-learning-institute/mentorhub-person-ui:latest .",
+    "container": "mh up person",
+    "down": "mh down"
   },
   "dependencies": {
     "axios": "^1.5.1",

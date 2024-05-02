@@ -27,7 +27,7 @@ ENV API_PORT 8083
 
 # Copy built assets from build stage to nginx serving directory
 COPY --from=build /app/dist /usr/share/nginx/html
-COPY --from=build /app/src/docker/default.conf.template /etc/nginx/templates/default.conf.template
+COPY --from=build /app/src/assets/default.conf.template /etc/nginx/templates/default.conf.template
 
 # Expose port 80
 EXPOSE 80

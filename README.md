@@ -23,43 +23,35 @@ To run the full UI and backing services locally
 mh up person
 ```
 
-## Using the Database and API Containers
-
-### Install Dependencies
-
+## Install Dependencies
 ``` bash
 npm install
 ```
 
-### Run backing services and local UI
-To run just the API and Test Database in containers and test locally, you can use the following command. 
-
+## Live Serve the UI Locally
 ```bash
-mh up person-api
 npm run serve
 ```
+This will start API and backing service containers to support testing.
 
-### Lints and fixes files
-
+## Lints and fixes files
 ``` bash
 npm run lint
 ```
 
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
-### Manually build and test UI container
-
-Build the UI container and run the full stack. If you are running the dev server, stop it before running this script.
-
-```bash
-./src/docker/docker-build.sh
+## Build a production deployment package
+``` bash
+npm run build
 ```
 
-## Access Paths
+## Build and test the UI container
+``` bash
+npm run container
+```
+This will build the UI container and launch the UI service. After launched you can the access Paths below
 
-You should now have access to the application, you can access the following pages
+## Access Paths
+After running the appropiate command, you can access the API following routes
 
 - Admin Screen [http://localhost:8083/admin](http://localhost:8083/admin)
 - Default [http://localhost:8083/](http://localhost:8083/) routes to List People
